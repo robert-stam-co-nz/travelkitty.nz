@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Travel Kitty</title>
+<style>
+  :root { color-scheme: light dark; }
+  body {
+    margin: 0 auto; max-width: 40rem; padding: 4rem 1.25rem 5rem;
+    font: 16px/1.65 -apple-system, "Segoe UI", Roboto, sans-serif;
+    color: #10192B; background: #F5F6FA; text-align: center;
+  }
+  .mark { width: 96px; height: 96px; margin: 0 auto 1.2rem; display: block; }
+  h1 { font-size: 2.1rem; margin: 0 0 .3rem; }
+  .tag { color: #7C8394; margin: 0 0 2.5rem; }
+  .links { display: flex; gap: .8rem; justify-content: center; flex-wrap: wrap; }
+  .links a {
+    display: inline-block; padding: .7rem 1.2rem; border-radius: 12px;
+    background: #fff; border: 1px solid #E3E6ED; color: #10192B;
+    text-decoration: none; font-weight: 700; font-size: .95rem;
+  }
+  .about { text-align: left; margin: 3rem 0 0; color: #4a4a4a; }
+  @media (prefers-color-scheme: dark) {
+    body { color: #E9EDF5; background: #141A26; }
+    .links a { background: #1D2534; border-color: #2A3242; color: #E9EDF5; }
+    .about { color: #B9C0CE; }
+  }
+</style>
+</head>
+<body>
+
+<svg class="mark" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" aria-label="Travel Kitty">
+  <rect width="1024" height="1024" rx="225" fill="#E3A008"/>
+  <path d="M420 292a44 44 0 0 1 44-44h96a44 44 0 0 1 44 44v80h-44v-36a20 20 0 0 0-20-20h-56a20 20 0 0 0-20 20v36h-44z" fill="#133A66"/>
+  <rect x="270" y="356" width="484" height="384" rx="52" fill="#133A66"/>
+  <ellipse cx="512" cy="602" rx="71" ry="50" fill="#E3A008"/>
+  <ellipse cx="404" cy="516" rx="27" ry="36" fill="#E3A008" transform="rotate(-26 404 516)"/>
+  <ellipse cx="474" cy="484" rx="29" ry="38" fill="#E3A008" transform="rotate(-8 474 484)"/>
+  <ellipse cx="550" cy="484" rx="29" ry="38" fill="#E3A008" transform="rotate(8 550 484)"/>
+  <ellipse cx="620" cy="516" rx="27" ry="36" fill="#E3A008" transform="rotate(26 620 516)"/>
+</svg>
+
+<h1>Travel Kitty</h1>
+<p class="tag">Track a trip together, settle up at the end.</p>
+
+<div class="links">
+  <a href="./privacy.html">Privacy policy</a>
+  <a href="./delete-account.html">Delete your account</a>
+</div>
+
+<div class="about">
+  <p>Travel Kitty is a shared travel-expense tracker for Android. Set a daily
+  budget, log what a trip costs as you go, and see who owes whom at the end.
+  Expenses can carry a photo and a place on a map, convert between currencies,
+  and split across everyone on the trip.</p>
+  <p>It works offline: expenses are saved on the device the moment you enter
+  them and sync when there is a connection.</p>
+</div>
+
+</body>
+</html>
