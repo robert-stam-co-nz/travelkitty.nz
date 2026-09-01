@@ -90,9 +90,12 @@ see your email address, your other trips, or anything else about your account.</
 by the <a href="https://firebase.google.com/support/privacy">Firebase privacy
 documentation</a>. Data is encrypted in transit.</p>
 
+<p>Google Maps is separate from the above: it draws the maps and is not where
+anything is stored. See "Other services the app talks to" below.</p>
+
 <h2>Other services the app talks to</h2>
 <ul>
-  <li><strong>Map tiles</strong> — when you open a map, tile images are fetched from a map provider. That request necessarily reveals your device's IP address and which part of the world you are looking at. No account data is sent.</li>
+  <li><strong>Google Maps</strong> — the maps are drawn by the Google Maps SDK. When you open one, it contacts Google to fetch map data, which necessarily reveals your device's IP address and which part of the world you are looking at, and Google receives information about that use under its own <a href="https://policies.google.com/privacy">privacy policy</a>. No account data, no expense amounts and no trip details are sent. Google's own "show my location" layer is switched off in this app, so the SDK is not given your position — the "pin where I am" button asks the operating system instead, and that coordinate stays on your device unless you save the pin.</li>
   <li><strong>Exchange rates</strong> — when an expense is in a currency other than the trip's, the app fetches a rate from a public exchange-rate API. The request contains only the currency codes: no personal data, no amounts.</li>
 </ul>
 
