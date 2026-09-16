@@ -31,7 +31,7 @@
 <body>
 
 <h1>Privacy Policy</h1>
-<p class="updated">Travel Kitty · last updated 9 September 2026</p>
+<p class="updated">Travel Kitty · last updated 16 September 2026</p>
 
 <p>Travel Kitty is a shared travel-expense tracker. You record what a trip
 costs, optionally with other people, and the app works out who owes what. This
@@ -114,9 +114,17 @@ sorted into categories rather than all in one pile.</p>
 
 <p>To do that it sends a list of the <strong>shop names</strong> in your file,
 and the currency each was billed in, to Google's Gemini model running on Google
-Cloud — the same Google Cloud that already stores your trips. Where your bank
+Cloud, under the same Google Cloud terms that cover your trips. Where your bank
 puts its own category label on a row, that label is sent too, as a starting
 point the model can correct.</p>
+
+<p><strong>This one request is not confined to the <code>us-east1</code> region
+the rest of your data is stored in.</strong> Google serves its current models
+from a global endpoint, routing each request to whichever data centre can
+answer it, so the shop names may be processed outside the United States.
+<strong>They are not stored there.</strong> The list is sent, the model
+answers, and nothing is kept — your trips, expenses and photos stay in
+<code>us-east1</code>, and this changes nothing about where they live.</p>
 
 <p><strong>The amounts, the dates, your balance and your account number are not
 sent, and neither is anything about who paid or which trip it is for.</strong>
