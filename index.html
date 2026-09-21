@@ -4,59 +4,394 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Travel Kitty</title>
+<meta name="description" content="Travel Kitty is a shared travel expense app for Android. Set a daily budget, log what you spend, split it across everyone, and see who owes who at the end. In closed testing now.">
 <style>
-  :root { color-scheme: light dark; }
-  body {
-    margin: 0 auto; max-width: 40rem; padding: 4rem 1.25rem 5rem;
-    font: 16px/1.65 -apple-system, "Segoe UI", Roboto, sans-serif;
-    color: #10192B; background: #F5F6FA; text-align: center;
+  :root {
+    color-scheme: light dark;
+    --gold: #E3A008;
+    --gold-ink: #8A6100;
+    --ink: #10192B;
+    --muted: #6B7383;
+    --bg: #F5F6FA;
+    --card: #FFFFFF;
+    --line: #E3E6ED;
+    --wash: #FBF5E6;
+    --tick: #128A5B;
+    --shadow: 0 1px 2px rgba(16,25,43,.06), 0 8px 24px rgba(16,25,43,.06);
   }
-  .mark { width: 96px; height: 96px; margin: 0 auto 1.2rem; display: block; }
-  h1 { font-size: 2.1rem; margin: 0 0 .3rem; }
-  .tag { color: #7C8394; margin: 0 0 2.5rem; }
-  .links { display: flex; gap: .8rem; justify-content: center; flex-wrap: wrap; }
-  .links a {
-    display: inline-block; padding: .7rem 1.2rem; border-radius: 12px;
-    background: #fff; border: 1px solid #E3E6ED; color: #10192B;
-    text-decoration: none; font-weight: 700; font-size: .95rem;
-  }
-  .about { text-align: left; margin: 3rem 0 0; color: #4a4a4a; }
   @media (prefers-color-scheme: dark) {
-    body { color: #E9EDF5; background: #141A26; }
-    .links a { background: #1D2534; border-color: #2A3242; color: #E9EDF5; }
-    .about { color: #B9C0CE; }
+    :root {
+      --gold-ink: #F0BE4B;
+      --ink: #E9EDF5;
+      --muted: #A6AEBE;
+      --bg: #141A26;
+      --card: #1D2534;
+      --line: #2A3242;
+      --wash: #26211A;
+      --tick: #4ECB9A;
+      --shadow: 0 1px 2px rgba(0,0,0,.3), 0 8px 24px rgba(0,0,0,.25);
+    }
   }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    font: 16px/1.65 -apple-system, "Segoe UI", Roboto, sans-serif;
+    color: var(--ink);
+    background: var(--bg);
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap { max-width: 62rem; margin: 0 auto; padding: 0 1rem; }
+  h1, h2, h3 { line-height: 1.2; letter-spacing: -0.02em; }
+  a { color: var(--gold-ink); }
+
+  /* ---------- hero ---------- */
+  .hero { text-align: center; padding: 3.5rem 0 2.5rem; }
+  .mark { width: 84px; height: 84px; margin: 0 auto 1.1rem; display: block; border-radius: 20px; box-shadow: var(--shadow); }
+  .hero h1 { font-size: clamp(2.3rem, 7vw, 3.4rem); margin: 0 0 .4rem; }
+  .tag { font-size: clamp(1.05rem, 3.2vw, 1.3rem); color: var(--muted); margin: 0 auto 1.6rem; max-width: 34rem; }
+  .pill {
+    display: inline-flex; align-items: center; gap: .5rem;
+    background: var(--wash); color: var(--gold-ink);
+    border: 1px solid rgba(227,160,8,.35);
+    border-radius: 999px; padding: .35rem .85rem;
+    font-size: .82rem; font-weight: 700; margin: 0 0 1.5rem;
+  }
+  .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--gold); flex: none; }
+
+  .cta-row { display: flex; gap: .7rem; justify-content: center; flex-wrap: wrap; }
+  .btn {
+    display: inline-block; padding: .85rem 1.5rem; border-radius: 12px;
+    text-decoration: none; font-weight: 700; font-size: 1rem;
+    border: 1px solid transparent; transition: transform .12s ease;
+  }
+  .btn:active { transform: translateY(1px); }
+  .btn-primary { background: var(--gold); color: #10192B; box-shadow: var(--shadow); }
+  .btn-ghost { background: var(--card); color: var(--ink); border-color: var(--line); }
+  .under-cta { font-size: .86rem; color: var(--muted); margin: 1rem 0 0; }
+
+  /* ---------- sections ---------- */
+  section { padding: 3.25rem 0; }
+  .sec-head { max-width: 40rem; margin: 0 0 2rem; }
+  .sec-head.center { margin-left: auto; margin-right: auto; text-align: center; }
+  .sec-head h2 { font-size: clamp(1.6rem, 4.5vw, 2.1rem); margin: 0 0 .5rem; }
+  .sec-head p { color: var(--muted); margin: 0 0 .7rem; font-size: 1.02rem; }
+  .sec-head p:last-child { margin-bottom: 0; }
+  .eyebrow {
+    font-size: .76rem; font-weight: 800; letter-spacing: .1em;
+    text-transform: uppercase; color: var(--gold-ink); margin: 0 0 .6rem;
+  }
+
+  /* ---------- screenshot rail ---------- */
+  .rail {
+    display: grid; grid-auto-flow: column; grid-auto-columns: 232px;
+    gap: 1.25rem; overflow-x: auto; padding: .25rem .25rem 1.5rem;
+    scroll-snap-type: x proximity; scrollbar-width: thin;
+    overscroll-behavior-x: contain;
+  }
+  .rail::-webkit-scrollbar { height: 8px; }
+  .rail::-webkit-scrollbar-thumb { background: var(--line); border-radius: 4px; }
+  .shot { scroll-snap-align: center; margin: 0; }
+  .shot img {
+    width: 100%; height: auto; display: block; border-radius: 18px;
+    border: 1px solid var(--line); background: var(--card);
+    box-shadow: var(--shadow);
+  }
+  .shot figcaption { margin-top: .8rem; }
+  .shot b { display: block; font-size: .95rem; }
+  .shot span { display: block; color: var(--muted); font-size: .86rem; line-height: 1.5; }
+  .rail-hint { color: var(--muted); font-size: .84rem; margin: 0; }
+
+  /* ---------- plans ---------- */
+  .plans { display: grid; gap: 1.25rem; grid-template-columns: 1fr; align-items: start; }
+  @media (min-width: 46rem) { .plans { grid-template-columns: 1fr 1fr; } }
+  .plan {
+    background: var(--card); border: 1px solid var(--line);
+    border-radius: 18px; padding: 1.75rem; box-shadow: var(--shadow);
+  }
+  .plan.premium { border-color: rgba(227,160,8,.5); }
+  .plan h3 { font-size: 1.35rem; margin: 0 0 .2rem; }
+  .price { font-size: .95rem; color: var(--muted); margin: 0 0 1.25rem; }
+  .price b { color: var(--ink); font-size: 1.05rem; }
+  .feat { list-style: none; margin: 0; padding: 0; }
+  .feat li {
+    display: flex; gap: .7rem; align-items: flex-start;
+    padding: .6rem 0; border-top: 1px solid var(--line); font-size: .95rem;
+  }
+  .feat li:first-child { border-top: 0; }
+  .feat svg { flex: none; margin-top: .3rem; }
+  .feat b { display: block; }
+  .feat small { display: block; color: var(--muted); font-size: .84rem; line-height: 1.45; }
+  .feat small.flag { color: var(--gold-ink); font-weight: 600; margin-top: .3rem; }
+  .note {
+    margin: 1.25rem 0 0; padding: .8rem 1rem; border-radius: 12px;
+    background: var(--wash); color: var(--gold-ink);
+    font-size: .85rem; line-height: 1.55; border: 1px solid rgba(227,160,8,.3);
+  }
+  .everyone { margin-top: 1.5rem; text-align: center; color: var(--muted); font-size: .92rem; }
+
+  /* ---------- join ---------- */
+  .join {
+    background: var(--card); border: 1px solid var(--line);
+    border-radius: 22px; padding: 2.5rem 1.5rem; text-align: center;
+    box-shadow: var(--shadow);
+  }
+  .join h2 { font-size: clamp(1.6rem, 4.5vw, 2.1rem); margin: 0 0 .6rem; }
+  .join > p { color: var(--muted); max-width: 38rem; margin: 0 auto 1.75rem; }
+  .three {
+    display: grid; gap: 1.25rem; grid-template-columns: 1fr;
+    text-align: left; margin: 0 auto 2rem; max-width: 46rem;
+  }
+  @media (min-width: 40rem) { .three { grid-template-columns: repeat(3, 1fr); } }
+  .three div { padding-top: .9rem; border-top: 2px solid var(--gold); }
+  .three b { display: block; margin-bottom: .2rem; }
+  .three span { color: var(--muted); font-size: .89rem; line-height: 1.55; }
+  .steps {
+    text-align: left; max-width: 34rem; margin: 2rem auto 0;
+    color: var(--muted); font-size: .9rem; padding-left: 1.2rem;
+  }
+  .steps li { margin: .5rem 0; }
+  .steps b { color: var(--ink); }
+
+  /* ---------- footer ---------- */
+  footer {
+    border-top: 1px solid var(--line); margin-top: 3rem;
+    padding: 2rem 0 3rem; text-align: center;
+    color: var(--muted); font-size: .88rem;
+  }
+  footer nav { display: flex; gap: 1.25rem; justify-content: center; flex-wrap: wrap; margin-bottom: 1rem; }
 </style>
 </head>
 <body>
 
-<svg class="mark" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" aria-label="Travel Kitty">
-  <rect width="1024" height="1024" rx="225" fill="#E3A008"/>
-  <path d="M420 292a44 44 0 0 1 44-44h96a44 44 0 0 1 44 44v80h-44v-36a20 20 0 0 0-20-20h-56a20 20 0 0 0-20 20v36h-44z" fill="#133A66"/>
-  <rect x="270" y="356" width="484" height="384" rx="52" fill="#133A66"/>
-  <ellipse cx="512" cy="602" rx="71" ry="50" fill="#E3A008"/>
-  <ellipse cx="404" cy="516" rx="27" ry="36" fill="#E3A008" transform="rotate(-26 404 516)"/>
-  <ellipse cx="474" cy="484" rx="29" ry="38" fill="#E3A008" transform="rotate(-8 474 484)"/>
-  <ellipse cx="550" cy="484" rx="29" ry="38" fill="#E3A008" transform="rotate(8 550 484)"/>
-  <ellipse cx="620" cy="516" rx="27" ry="36" fill="#E3A008" transform="rotate(26 620 516)"/>
-</svg>
+<div class="wrap">
 
-<h1>Travel Kitty</h1>
-<p class="tag">Track a trip together, settle up at the end.</p>
+  <!-- ============ HERO ============ -->
+  <header class="hero">
+    <svg class="mark" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Travel Kitty">
+      <rect width="1024" height="1024" rx="225" fill="#E3A008"/>
+      <path d="M420 292a44 44 0 0 1 44-44h96a44 44 0 0 1 44 44v80h-44v-36a20 20 0 0 0-20-20h-56a20 20 0 0 0-20 20v36h-44z" fill="#133A66"/>
+      <rect x="270" y="356" width="484" height="384" rx="52" fill="#133A66"/>
+      <ellipse cx="512" cy="602" rx="71" ry="50" fill="#E3A008"/>
+      <ellipse cx="404" cy="516" rx="27" ry="36" fill="#E3A008" transform="rotate(-26 404 516)"/>
+      <ellipse cx="474" cy="484" rx="29" ry="38" fill="#E3A008" transform="rotate(-8 474 484)"/>
+      <ellipse cx="550" cy="484" rx="29" ry="38" fill="#E3A008" transform="rotate(8 550 484)"/>
+      <ellipse cx="620" cy="516" rx="27" ry="36" fill="#E3A008" transform="rotate(26 620 516)"/>
+    </svg>
 
-<div class="links">
-  <a href="./privacy.html">Privacy policy</a>
-  <a href="./delete-account.html">Delete your account</a>
+    <p class="pill"><span class="dot"></span> In closed testing on Google Play</p>
+
+    <h1>Travel Kitty</h1>
+    <p class="tag">Track a trip together. Settle up at the end.</p>
+
+    <div class="cta-row">
+      <a class="btn btn-primary" href="https://groups.google.com/g/travel-kitty-testers">Ask to join the testers group</a>
+      <a class="btn btn-ghost" href="#look">See what it looks like</a>
+    </div>
+    <p class="under-cta">Android &middot; free to join &middot; testers pay nothing for Premium</p>
+  </header>
+
+  <!-- ============ WHAT IT IS ============ -->
+  <section>
+    <div class="sec-head center">
+      <p class="eyebrow">What it is</p>
+      <h2>One shared kitty for the whole trip</h2>
+      <p>Set a daily budget. Log what you spend as you go. Travel Kitty does the
+      maths.</p>
+      <p>Each expense can carry a photo, a place on the map and its own
+      currency, and it splits across whoever shared it.</p>
+      <p>It works with no signal. Expenses save straight away and sync later,
+      which is the point on a real trip.</p>
+    </div>
+  </section>
+
+  <!-- ============ SCREENSHOTS ============ -->
+  <section id="look">
+    <div class="sec-head">
+      <p class="eyebrow">A look inside</p>
+      <h2>Every screen, as it ships</h2>
+      <p class="rail-hint">Scroll sideways. These are real screens from the build testers have now.</p>
+    </div>
+
+    <div class="rail">
+      <figure class="shot">
+        <img src="shots/01-overview.png" alt="The Overview tab: surplus of $71.70, a daily average of $204.39, the total today and the trip total, a trip map row, and recent activity." loading="lazy" width="1080" height="2160">
+        <figcaption><b>The trip at a glance</b><span>Surplus, daily average and the running total. Your latest expenses sit underneath.</span></figcaption>
+      </figure>
+
+      <figure class="shot">
+        <img src="shots/02-expenses.png" alt="The Expenses tab, listing every expense on the trip." loading="lazy" width="1080" height="2160">
+        <figcaption><b>Everything you have spent</b><span>Filter the list, pick a run of rows, then change their category or delete them at once.</span></figcaption>
+      </figure>
+
+      <figure class="shot">
+        <img src="shots/03-insights.png" alt="Insights: budget, spent, adjustments and surplus, above a donut chart of spend by category." loading="lazy" width="1080" height="2160">
+        <figcaption><b>Where the money went</b><span>Budget against spend, broken down by category, by person or by day.</span></figcaption>
+      </figure>
+
+      <figure class="shot">
+        <img src="shots/04-people.png" alt="Insights by person: Rob paid $2,184.30 and is owed $184.25; Gill paid $64.00 and owes $184.25." loading="lazy" width="1080" height="2160">
+        <figcaption><b>Who has paid what</b><span>What each person put in, next to what they actually owe.</span></figcaption>
+      </figure>
+
+      <figure class="shot">
+        <img src="shots/05-daily.png" alt="Insights by day, showing what was spent on each day of the trip." loading="lazy" width="1080" height="2160">
+        <figcaption><b>Day by day</b><span>See which days cost the most, and whether you are under budget.</span></figcaption>
+      </figure>
+
+      <figure class="shot">
+        <img src="shots/07-split.png" alt="The expense form: amount, currency, category, description, location, photo, date, who paid, and who it splits between." loading="lazy" width="1080" height="2160">
+        <figcaption><b>One expense, in full</b><span>Amount, currency, category, a photo and a pin on the map. Then who paid, and who shares it.</span></figcaption>
+      </figure>
+
+      <figure class="shot">
+        <img src="shots/09-surplus.png" alt="The surplus screen, listing manual top-ups made against the trip." loading="lazy" width="1080" height="2160">
+        <figcaption><b>Manage surplus</b><span>Money that is not an expense. A refund, or something someone settled separately. Each one moves the surplus.</span></figcaption>
+      </figure>
+
+      <figure class="shot">
+        <img src="shots/06-group.png" alt="The Group tab: an invite code, the people on the trip, and a suggested payment from Gill to Rob for $184.25." loading="lazy" width="1080" height="2160">
+        <figcaption><b>Settle up at the end</b><span>Share a code to bring people in. Get the shortest list of payments that squares everyone up.</span></figcaption>
+      </figure>
+
+      <figure class="shot">
+        <img src="shots/08-import.png" alt="The import screen reading a CSV file, with 31 rows ready and options for date format, splitting and currency." loading="lazy" width="1080" height="2160">
+        <figcaption><b>Import instead of typing</b><span>CSV, CAMT, OFX and QIF files. You check every row before it saves.</span></figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- ============ PLANS ============ -->
+  <section id="plans">
+    <div class="sec-head center">
+      <p class="eyebrow">Free and Premium</p>
+      <h2>Nearly all of it is free</h2>
+      <p>Two things cost real money to run: storing your photos, and reading
+      your bank statements for you. Those are Premium.</p>
+      <p>Everything else is free. Charts, settling up, the map, exchange rates,
+      dark mode. No ads and no trackers, on either plan.</p>
+    </div>
+
+    <div class="plans">
+
+      <div class="plan">
+        <h3>Free</h3>
+        <p class="price"><b>NZ$0</b>. No card, no trial, no ads.</p>
+        <ul class="feat">
+          <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true" style="color:var(--tick)"><circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.6"/><path d="M5 8.2l2 2 4-4.2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <div><b>Two trips of your own</b><small>Trips other people invite you to do not count. Join as many as you like.</small></div></li>
+          <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true" style="color:var(--tick)"><circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.6"/><path d="M5 8.2l2 2 4-4.2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <div><b>Up to 20 people on a trip</b><small>The same on both plans. Your plan never limits anyone you invite.</small></div></li>
+          <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true" style="color:var(--tick)"><circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.6"/><path d="M5 8.2l2 2 4-4.2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <div><b>Any currency, converted for you</b><small>Travel Kitty looks up the day&rsquo;s rate and sticks to it, so an expense never changes price later.</small></div></li>
+          <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true" style="color:var(--tick)"><circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.6"/><path d="M5 8.2l2 2 4-4.2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <div><b>Charts, settle-up, surplus and the map</b><small>All of Insights. The shortest way to square up. Manage surplus. Places pinned on the map.</small></div></li>
+          <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true" style="color:var(--tick)"><circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.6"/><path d="M5 8.2l2 2 4-4.2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <div><b>Your own categories and a profile photo</b><small>Build the list of categories you actually use, and put a face to your name.</small></div></li>
+          <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true" style="color:var(--tick)"><circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.6"/><path d="M5 8.2l2 2 4-4.2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <div><b>Filter and bulk-edit expenses</b><small>Change the category on a whole run of rows, or delete them, in one go.</small></div></li>
+          <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true" style="color:var(--tick)"><circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.6"/><path d="M5 8.2l2 2 4-4.2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <div><b>A cover photo on every trip</b><small>One per trip, shared with everyone on it.</small></div></li>
+          <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true" style="color:var(--tick)"><circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.6"/><path d="M5 8.2l2 2 4-4.2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <div><b>Photos of where you spent</b><small>Take them and look at them. On Free they stay on your phone, and nobody else on the trip sees them.</small></div></li>
+          <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true" style="color:var(--tick)"><circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.6"/><path d="M5 8.2l2 2 4-4.2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <div><b>CSV export, always</b><small>Your data is yours. You never have to pay to get it out.</small></div></li>
+          <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true" style="color:var(--tick)"><circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.6"/><path d="M5 8.2l2 2 4-4.2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <div><b>Works offline, and in the dark</b><small>Expenses save with no signal and sync later. Light and dark themes throughout.</small></div></li>
+        </ul>
+      </div>
+
+      <div class="plan premium">
+        <h3>Premium</h3>
+        <p class="price"><b>NZ$4.99</b> a month, or <b>NZ$39.99</b> a year</p>
+        <ul class="feat">
+          <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><circle cx="8" cy="8" r="7" fill="#E3A008"/><path d="M5 8.2l2 2 4-4.2" stroke="#10192B" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <div><b>Everything in Free</b><small>Nothing is taken away, and anything you have already entered stays yours.</small></div></li>
+          <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><circle cx="8" cy="8" r="7" fill="#E3A008"/><path d="M5 8.2l2 2 4-4.2" stroke="#10192B" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <div><b>As many trips as you like</b><small>The limit of two goes away.</small></div></li>
+          <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><circle cx="8" cy="8" r="7" fill="#E3A008"/><path d="M5 8.2l2 2 4-4.2" stroke="#10192B" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <div><b>Photos stored and shared</b><small>Your place photos upload. Everyone on the trip can see them, and they come back on a new phone.</small></div></li>
+          <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><circle cx="8" cy="8" r="7" fill="#E3A008"/><path d="M5 8.2l2 2 4-4.2" stroke="#10192B" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <div><b>Statements sorted for you</b><small>Import a CSV, CAMT, OFX or QIF file. Travel Kitty reads the shop names and sorts the rows into categories.</small></div></li>
+          <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><circle cx="8" cy="8" r="7" fill="#E3A008"/><path d="M5 8.2l2 2 4-4.2" stroke="#10192B" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <div><b>Connect a bank</b><small>Link up to three banks and pull in new transactions whenever you want, with no file to download. Wise, Revolut and about 9,700 others.</small><small class="flag">In the test build this runs against Plaid&rsquo;s test system. Use the sandbox login, not your real bank.</small></div></li>
+          <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><circle cx="8" cy="8" r="7" fill="#E3A008"/><path d="M5 8.2l2 2 4-4.2" stroke="#10192B" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <div><b>Email support within a business day</b><small>A reply from the person who built it.</small></div></li>
+        </ul>
+        <p class="note"><b>Testers pay nothing.</b> Everyone in the group is on
+        Google&rsquo;s licence testing list, so Premium is free while the test
+        runs and you will never be charged. If Play does ask you for money,
+        stop and tell me. That means something is wrong at my end.</p>
+      </div>
+
+    </div>
+
+    <p class="everyone">No ads. No trackers. No analytics. On both plans.</p>
+  </section>
+
+  <!-- ============ JOIN ============ -->
+  <section id="join">
+    <div class="join">
+      <p class="eyebrow">Come and break it</p>
+      <h2>Be in the first group to use it</h2>
+      <p>Travel Kitty is in closed testing. A small group are using it on real
+      trips and telling me what is wrong with it. That group is open, and it is
+      where the app gets decided.</p>
+
+      <div class="three">
+        <div>
+          <b>Be in first</b>
+          <span>Get it before it reaches the Play Store properly. Every paid
+          feature is unlocked and there is nothing to pay.</span>
+        </div>
+        <div>
+          <b>Ask for what is missing</b>
+          <span>Most of what is in the app now is there because somebody asked
+          for it. Say what you want and there is a good chance you will see
+          it.</span>
+        </div>
+        <div>
+          <b>Be part of the journey</b>
+          <span>Watch it go from a closed test to a real release, and know which
+          bits are there because of you.</span>
+        </div>
+      </div>
+
+      <div class="cta-row">
+        <a class="btn btn-primary" href="https://groups.google.com/g/travel-kitty-testers">Ask to join the group</a>
+      </div>
+
+      <ol class="steps">
+        <li><b>Ask to join the group, on your phone if you can.</b> Google
+        signs you in before it lets you ask, and that is how I get the right
+        account. On a computer, check you are signed in as the account your
+        phone uses. Settings &rsaquo; Google on the phone will tell you which
+        one that is.</li>
+        <li><b>I approve you, then send the opt-in link.</b> Open it on your
+        phone and it takes you to the Play Store, where you install as normal.
+        I approve by hand, so give me a day.</li>
+        <li><b>Tell me what confused you</b>, by posting in the group. It comes
+        straight to me and no other tester sees it. Bugs turn up on their own.
+        The moment you did not know what to do next is the thing I cannot see
+        from here.</li>
+      </ol>
+    </div>
+  </section>
+
 </div>
 
-<div class="about">
-  <p>Travel Kitty is a shared travel-expense tracker for Android. Set a daily
-  budget, log what a trip costs as you go, and see who owes whom at the end.
-  Expenses can carry a photo and a place on a map, convert between currencies,
-  and split across everyone on the trip.</p>
-  <p>It works offline: expenses are saved on the device the moment you enter
-  them and sync when there is a connection.</p>
-</div>
+<footer>
+  <div class="wrap">
+    <nav>
+      <a href="https://groups.google.com/g/travel-kitty-testers">Testers group</a>
+      <a href="./privacy.html">Privacy policy</a>
+      <a href="./delete-account.html">Delete your account</a>
+    </nav>
+    <p>Travel Kitty. A shared travel expense app for Android.<br>
+    Made in New Zealand.</p>
+  </div>
+</footer>
 
 </body>
 </html>
