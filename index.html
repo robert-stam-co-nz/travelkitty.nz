@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Travel Kitty</title>
-<meta name="description" content="Travel Kitty is a shared travel expense app for Android. Set a daily budget, log what you spend, split it across everyone, and see who owes who — any time you check. In closed testing now.">
+<meta name="description" content="Travel Kitty is a shared travel expense app for Android. Set a daily budget, log what you spend, split it across everyone, and see who owes who, any time you check. Coming soon to Google Play.">
 <style>
   :root {
     color-scheme: light dark;
@@ -46,8 +46,17 @@
   h1, h2, h3 { line-height: 1.2; letter-spacing: -0.02em; }
   a { color: var(--gold-ink); }
 
+  /* ---------- top bar ---------- */
+  .topbar { display: flex; justify-content: flex-end; padding: 1rem 0 0; }
+  .topbar a {
+    font-weight: 700; font-size: .92rem; text-decoration: none;
+    color: var(--ink); background: var(--card);
+    border: 1px solid var(--line); border-radius: 999px;
+    padding: .45rem 1rem;
+  }
+
   /* ---------- hero ---------- */
-  .hero { text-align: center; padding: 3.5rem 0 2.5rem; }
+  .hero { text-align: center; padding: 1.5rem 0 2.5rem; }
   .mark { width: 84px; height: 84px; margin: 0 auto 1.1rem; display: block; border-radius: 20px; box-shadow: var(--shadow); }
   .hero h1 { font-size: clamp(2.3rem, 7vw, 3.4rem); margin: 0 0 .4rem; }
   .tag { font-size: clamp(1.05rem, 3.2vw, 1.3rem); color: var(--muted); margin: 0 auto 1.6rem; max-width: 34rem; }
@@ -175,6 +184,10 @@
 
 <div class="wrap">
 
+  <nav class="topbar" aria-label="Account">
+    <a href="https://view.travelkitty.nz">Sign in</a>
+  </nav>
+
   <!-- ============ HERO ============ -->
   <header class="hero">
     <svg class="mark" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Travel Kitty">
@@ -188,16 +201,16 @@
       <ellipse cx="620" cy="516" rx="27" ry="36" fill="#E3A008" transform="rotate(26 620 516)"/>
     </svg>
 
-    <p class="pill"><span class="dot"></span> In closed testing on Google Play</p>
+    <p class="pill"><span class="dot"></span> Coming soon to Google Play</p>
 
     <h1>Travel Kitty</h1>
     <p class="tag">Track a trip together. Know who owes who, any time.</p>
 
     <div class="cta-row">
-      <a class="btn btn-primary" href="https://groups.google.com/g/travel-kitty-testers">Join the testers</a>
-      <a class="btn btn-ghost" href="#look">See it in action</a>
+      <a class="btn btn-primary" href="#look">See it in action</a>
+      <a class="btn btn-ghost" href="#signin">Already using it? Sign in</a>
     </div>
-    <p class="under-cta">Android &middot; free to join &middot; Premium free while you test</p>
+    <p class="under-cta">For Android &middot; free to use &middot; no ads</p>
   </header>
 
   <!-- ============ WHAT IT IS ============ -->
@@ -219,6 +232,16 @@
         <span>No signal, no problem. Expenses save straight to your phone and
         sync the moment you&rsquo;re back online.</span>
       </div>
+      <div>
+        <b>Friends on iPhone come too</b>
+        <span>Send them a link to the trip. They can follow every expense and
+        see who owes who in their browser, with nothing to install.</span>
+      </div>
+      <div>
+        <b>Your data is yours</b>
+        <span>Export any trip to a spreadsheet, on either plan. No ads, no
+        trackers, and nothing sold.</span>
+      </div>
     </div>
   </section>
 
@@ -226,8 +249,8 @@
   <section id="look">
     <div class="sec-head">
       <p class="eyebrow">A look inside</p>
-      <h2>Every screen, exactly as it ships</h2>
-      <p class="rail-hint">Scroll sideways &mdash; these are real screens from the build testers are using right now.</p>
+      <h2>See it in action</h2>
+      <p class="rail-hint">Scroll sideways. These are real screens from a real trip.</p>
     </div>
 
     <div class="rail">
@@ -324,15 +347,10 @@
           <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><circle cx="8" cy="8" r="7" fill="#E3A008"/><path d="M5 8.2l2 2 4-4.2" stroke="#10192B" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
             <div><b>Photos stored and shared</b><small>Your place photos upload. Everyone on the trip can see them, and they come back on a new phone.</small></div></li>
           <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><circle cx="8" cy="8" r="7" fill="#E3A008"/><path d="M5 8.2l2 2 4-4.2" stroke="#10192B" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            <div><b>Connect a bank</b><small>Link up to three banks and pull in new transactions whenever you want, with no statement to download. Travel Kitty reads the shop names and sorts each one into a category for you. Wise, Revolut and about 9,700 others.</small><small class="flag">In the test build this runs against Plaid&rsquo;s test system. Use the sandbox login, not your real bank.</small></div></li>
+            <div><b>Connect a bank</b><small>Link up to three banks and pull in new transactions whenever you want, with no statement to download. Travel Kitty reads the shop names and sorts each one into a category for you. Wise, Revolut and about 9,700 others.</small><small class="flag">Coming soon. It isn&rsquo;t available yet.</small></div></li>
           <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><circle cx="8" cy="8" r="7" fill="#E3A008"/><path d="M5 8.2l2 2 4-4.2" stroke="#10192B" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
             <div><b>Email support within a business day</b><small>A reply from the person who built it.</small></div></li>
         </ul>
-        <p class="note"><b>Testers pay nothing.</b> You&rsquo;re on
-        Google&rsquo;s licence testing list, so Premium is free for the whole
-        test &mdash; you&rsquo;ll never be charged. If Play ever asks you for
-        money, stop and tell me; that means something&rsquo;s wrong at my
-        end.</p>
       </div>
 
     </div>
@@ -340,52 +358,36 @@
     <p class="everyone">No ads. No trackers. No analytics. On both plans.</p>
   </section>
 
-  <!-- ============ JOIN ============ -->
-  <section id="join">
+  <!-- ============ SIGN IN ============ -->
+  <section id="signin">
     <div class="join">
-      <p class="eyebrow">Come and break it</p>
-      <h2>Be in the first group to use it</h2>
-      <p>Travel Kitty is in closed testing. A small group are using it on real
-      trips and telling me what is wrong with it &mdash; and that is exactly
-      where the app gets decided.</p>
+      <p class="eyebrow">Already have an account?</p>
+      <h2>See your trips from any browser</h2>
+      <p>Sign in with the Google account or email you use in Travel Kitty,
+      and your trips are all there. Check the balance on a laptop, or look
+      over the trip on an iPhone.</p>
 
       <div class="three">
         <div>
-          <b>Be in first</b>
-          <span>Get it before it reaches the Play Store properly. Every paid
-          feature is unlocked and there is nothing to pay.</span>
+          <b>Same account, same trips</b>
+          <span>Everything you and the others have added shows up as soon as it
+          syncs. There is nothing to set up.</span>
         </div>
         <div>
-          <b>Ask for what is missing</b>
-          <span>Most of what is in the app now is there because somebody asked
-          for it. Say what you want and there is a good chance you will see
-          it.</span>
+          <b>For looking, not changing</b>
+          <span>You can read the Overview, Expenses and Insights. To add or
+          change an expense, use the app on your Android phone.</span>
         </div>
         <div>
-          <b>Be part of the journey</b>
-          <span>Watch it go from a closed test to a real release, and know which
-          bits are there because of you.</span>
+          <b>Got a link to a trip?</b>
+          <span>Open it, then sign in or create an account, and you&rsquo;ll
+          join the trip you were sent.</span>
         </div>
       </div>
 
       <div class="cta-row">
-        <a class="btn btn-primary" href="https://groups.google.com/g/travel-kitty-testers">Ask to join the group</a>
+        <a class="btn btn-primary" href="https://view.travelkitty.nz">Sign in to see your trips</a>
       </div>
-
-      <ol class="steps">
-        <li><b>Ask to join the group, on your phone if you can.</b> Google
-        signs you in before it lets you ask, and that is how I get the right
-        account. On a computer, check you are signed in as the account your
-        phone uses. Settings &rsaquo; Google on the phone will tell you which
-        one that is.</li>
-        <li><b>I approve you, then send the opt-in link.</b> Open it on your
-        phone and it takes you to the Play Store, where you install as normal.
-        I approve by hand, so give me a day.</li>
-        <li><b>Tell me what confused you</b>, by posting in the group. It comes
-        straight to me and no other tester sees it. Bugs turn up on their own.
-        The moment you did not know what to do next is the thing I cannot see
-        from here.</li>
-      </ol>
     </div>
   </section>
 
@@ -394,7 +396,8 @@
 <footer>
   <div class="wrap">
     <nav>
-      <a href="https://groups.google.com/g/travel-kitty-testers">Testers group</a>
+      <a href="https://view.travelkitty.nz">Sign in</a>
+      <a href="mailto:support@travelkitty.nz">Contact us</a>
       <a href="./privacy.html">Privacy policy</a>
       <a href="./delete-account.html">Delete your account</a>
     </nav>
