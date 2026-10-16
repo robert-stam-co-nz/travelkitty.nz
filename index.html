@@ -94,14 +94,12 @@
 
   /* ---------- screenshot rail ---------- */
   .rail {
-    display: grid; grid-auto-flow: column; grid-auto-columns: 232px;
-    gap: 1.25rem; overflow-x: auto; padding: .25rem .25rem 1.5rem;
-    scroll-snap-type: x proximity; scrollbar-width: thin;
-    overscroll-behavior-x: contain;
+    display: grid; grid-template-columns: 1fr; justify-items: center;
+    gap: 2.25rem 1.25rem; padding: .25rem;
   }
-  .rail::-webkit-scrollbar { height: 8px; }
-  .rail::-webkit-scrollbar-thumb { background: var(--line); border-radius: 4px; }
-  .shot { scroll-snap-align: center; margin: 0; }
+  @media (min-width: 36rem) { .rail { grid-template-columns: repeat(2, 1fr); } }
+  @media (min-width: 56rem) { .rail { grid-template-columns: repeat(4, 1fr); } }
+  .shot { margin: 0; width: 100%; max-width: 17rem; }
   .shot img {
     width: 100%; height: auto; display: block; border-radius: 18px;
     border: 1px solid var(--line); background: var(--card);
@@ -257,7 +255,7 @@
     <div class="sec-head">
       <p class="eyebrow">A look inside</p>
       <h2>See it in action</h2>
-      <p class="rail-hint">Scroll sideways. These are real screens from a real trip.</p>
+      <p class="rail-hint">These are real screens from a real trip.</p>
     </div>
 
     <div class="rail">
