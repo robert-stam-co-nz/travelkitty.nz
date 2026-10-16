@@ -139,6 +139,14 @@
     font-size: .85rem; line-height: 1.55; border: 1px solid rgba(227,160,8,.3);
   }
   .everyone { margin-top: 1.5rem; text-align: center; color: var(--muted); font-size: .92rem; }
+  .plan-intro { color: var(--muted); font-size: .95rem; margin: 0 0 .5rem; }
+  .grp {
+    font-size: .76rem; font-weight: 800; letter-spacing: .08em;
+    text-transform: uppercase; color: var(--gold-ink); margin: 1.5rem 0 .25rem;
+  }
+  .closing { text-align: center; max-width: 36rem; margin: 3rem auto 0; }
+  .closing h3 { font-size: 1.35rem; margin: 0 0 .6rem; }
+  .closing p { color: var(--muted); margin: 0 0 .7rem; }
 
   /* ---------- join ---------- */
   .join {
@@ -207,8 +215,7 @@
     <p class="tag">Track a trip together. Know who owes who, any time.</p>
 
     <div class="cta-row">
-      <a class="btn btn-primary" href="#look">See it in action</a>
-      <a class="btn btn-ghost" href="#signin">Already using it? Sign in</a>
+      <a class="btn btn-primary" href="#signin">Already using it? Sign in</a>
     </div>
     <p class="under-cta">For Android &middot; free to use &middot; no ads</p>
   </header>
@@ -238,9 +245,9 @@
         owes who in their browser, with nothing to install.</span>
       </div>
       <div>
-        <b>Your data is yours</b>
-        <span>Export any trip to a spreadsheet, on either plan. No ads, no
-        trackers, and nothing sold.</span>
+        <b>Nothing sold, nothing tracked</b>
+        <span>No ads, no trackers, no analytics. Premium lets you export any
+        trip to a spreadsheet.</span>
       </div>
     </div>
   </section>
@@ -301,61 +308,80 @@
     <div class="sec-head center">
       <p class="eyebrow">Free and Premium</p>
       <h2>Nearly all of it is free</h2>
-      <p>Two things cost real money to run &mdash; storing your photos, and
-      connecting your bank. Those are Premium.</p>
+      <p>Storing your photos and sorting your bank transactions cost real money
+      to run, so those are Premium. So are unlimited trips, exporting your
+      expenses and making your own categories.</p>
       <p>Everything else is free: charts, settling up, the map, exchange rates,
-      dark mode. No ads, no trackers, on either plan.</p>
+      bank import, dark mode. No ads, no trackers, on either plan.</p>
     </div>
 
     <div class="plans">
 
       <div class="plan">
         <h3>Free</h3>
-        <p class="price"><b>NZ$0</b>. No card, no trial, no ads.</p>
+        <p class="price"><b>NZ$0</b>. No card, no trial, no ads. Just get started.</p>
+        <p class="plan-intro">Everything you need to keep track of shared travel expenses, without spending a cent.</p>
+        <p class="grp">Your trips, your way</p>
         <ul class="feat">
           <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true" style="color:var(--tick)"><circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.6"/><path d="M5 8.2l2 2 4-4.2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            <div><b>Two trips of your own</b><small>Trips other people invite you to do not count. Join as many as you like.</small></div></li>
+            <div><b>Two trips of your own</b><small>Create up to two trips of your own, for free. Trips someone else invites you to don&rsquo;t count towards your limit, so you can join as many as you like.</small></div></li>
           <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true" style="color:var(--tick)"><circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.6"/><path d="M5 8.2l2 2 4-4.2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            <div><b>Up to 20 people on a trip</b><small>The same on both plans. Your plan never limits anyone you invite.</small></div></li>
+            <div><b>Up to 20 people per trip</b><small>Travelling with friends, family or a group? Invite up to 20 people to any trip. Your plan won&rsquo;t limit the people you can bring along.</small></div></li>
           <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true" style="color:var(--tick)"><circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.6"/><path d="M5 8.2l2 2 4-4.2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            <div><b>Any currency, converted for you</b><small>Travel Kitty looks up the day&rsquo;s rate and sticks to it, so an expense never changes price later.</small></div></li>
+            <div><b>Every currency, taken care of</b><small>Spending in another currency? No worries. Travel Kitty looks up the day&rsquo;s exchange rate and locks it in, so an expense never changes value later.</small></div></li>
+        </ul>
+        <p class="grp">Everything you need to settle up</p>
+        <ul class="feat">
           <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true" style="color:var(--tick)"><circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.6"/><path d="M5 8.2l2 2 4-4.2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            <div><b>Charts, settle-up, surplus and the map</b><small>All of Insights. The shortest way to square up. Manage surplus. Places pinned on the map.</small></div></li>
+            <div><b>Charts, settle-ups, top-ups and maps</b><small>See where your money goes with Insights, find the easiest way to settle up, keep track of top-ups and refunds, and pin the places you&rsquo;ve spent money on the map.</small></div></li>
           <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true" style="color:var(--tick)"><circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.6"/><path d="M5 8.2l2 2 4-4.2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            <div><b>Your own categories and a profile photo</b><small>Build the list of categories you actually use, and put a face to your name.</small></div></li>
+            <div><b>Import transactions from your bank</b><small>Connect your NZ bank through Akahu or bring in your Wise transactions. They&rsquo;ll arrive in Uncategorised, ready for you to sort through.</small></div></li>
           <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true" style="color:var(--tick)"><circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.6"/><path d="M5 8.2l2 2 4-4.2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            <div><b>Filter and bulk-edit expenses</b><small>Change the category on a whole run of rows, or delete them, in one go.</small></div></li>
+            <div><b>Categories and your own profile photo</b><small>Keep expenses organised with built-in categories, and add a profile photo so everyone knows who&rsquo;s who.</small></div></li>
           <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true" style="color:var(--tick)"><circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.6"/><path d="M5 8.2l2 2 4-4.2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            <div><b>A cover photo on every trip</b><small>One per trip, shared with everyone on it.</small></div></li>
+            <div><b>Filter and edit expenses in bulk</b><small>Need to change a bunch of categories or delete several expenses? Filter the list and make those changes all at once.</small></div></li>
           <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true" style="color:var(--tick)"><circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.6"/><path d="M5 8.2l2 2 4-4.2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            <div><b>Photos of where you spent</b><small>Take them and look at them. On Free they stay on your phone, and nobody else on the trip sees them.</small></div></li>
+            <div><b>Give every trip its own cover photo</b><small>Add a cover photo to each trip to make it feel like yours. Everyone on the trip gets to see it.</small></div></li>
           <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true" style="color:var(--tick)"><circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.6"/><path d="M5 8.2l2 2 4-4.2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            <div><b>CSV export, always</b><small>Your data is yours. You never have to pay to get it out.</small></div></li>
+            <div><b>Keep photos of the places you&rsquo;ve been</b><small>Take photos of the places where you spent money and look back on them whenever you like. On Free, they&rsquo;re stored on your phone and aren&rsquo;t shared with the rest of your trip.</small></div></li>
           <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true" style="color:var(--tick)"><circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.6"/><path d="M5 8.2l2 2 4-4.2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            <div><b>Works offline, and in the dark</b><small>Expenses save with no signal and sync later. Light and dark themes throughout.</small></div></li>
+            <div><b>Ready when you are, even offline</b><small>No signal? No problem. Your expenses save on your phone and sync when you&rsquo;re back online. And whether you prefer light or dark, Travel Kitty has you covered.</small></div></li>
         </ul>
       </div>
 
       <div class="plan premium">
         <h3>Premium</h3>
-        <p class="price"><b>NZ$4.99</b> a month, or <b>NZ$39.99</b> a year</p>
+        <p class="price"><b>NZ$4.99</b> a month or <b>NZ$39.99</b> a year</p>
+        <p class="plan-intro">For those who want a little more room to travel, keep everything organised and spend less time sorting out expenses.</p>
+        <p class="grp">Everything in Free, plus a little extra</p>
         <ul class="feat">
           <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><circle cx="8" cy="8" r="7" fill="#E3A008"/><path d="M5 8.2l2 2 4-4.2" stroke="#10192B" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            <div><b>Everything in Free</b><small>Nothing is taken away, and anything you have already entered stays yours.</small></div></li>
+            <div><b>As many trips as you like</b><small>Two trips aren&rsquo;t always enough. With Premium, create as many of your own trips as you need. Everything you&rsquo;ve already entered stays right where it is.</small></div></li>
           <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><circle cx="8" cy="8" r="7" fill="#E3A008"/><path d="M5 8.2l2 2 4-4.2" stroke="#10192B" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            <div><b>As many trips as you like</b><small>The limit of two goes away.</small></div></li>
+            <div><b>Your photos, wherever you go</b><small>Your place photos are stored and shared with everyone on the trip. Get a new phone? Your photos come with you.</small></div></li>
           <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><circle cx="8" cy="8" r="7" fill="#E3A008"/><path d="M5 8.2l2 2 4-4.2" stroke="#10192B" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            <div><b>Photos stored and shared</b><small>Your place photos upload. Everyone on the trip can see them, and they come back on a new phone.</small></div></li>
+            <div><b>Bank transactions sorted for you</b><small>Import from your bank and let Travel Kitty do the busywork. It reads the shop names and automatically puts transactions into the right categories, so there&rsquo;s less sorting for you to do.</small></div></li>
           <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><circle cx="8" cy="8" r="7" fill="#E3A008"/><path d="M5 8.2l2 2 4-4.2" stroke="#10192B" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            <div><b>Connect a bank</b><small>Link up to three banks and pull in new transactions whenever you want, with no statement to download. Travel Kitty reads the shop names and sorts each one into a category for you. Wise, Revolut and about 9,700 others.</small><small class="flag">Coming soon. It isn&rsquo;t available yet.</small></div></li>
+            <div><b>Export your expenses</b><small>Want a copy of everything? Download any trip&rsquo;s expenses as a CSV spreadsheet, ready to open and use wherever you need.</small></div></li>
           <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><circle cx="8" cy="8" r="7" fill="#E3A008"/><path d="M5 8.2l2 2 4-4.2" stroke="#10192B" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            <div><b>Email support within a business day</b><small>A reply from the person who built it.</small></div></li>
+            <div><b>Make categories your own</b><small>Everyone tracks spending a little differently. Create your own categories to suit the way you travel and the things you spend money on.</small></div></li>
+          <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><circle cx="8" cy="8" r="7" fill="#E3A008"/><path d="M5 8.2l2 2 4-4.2" stroke="#10192B" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <div><b>Real help from a real person</b><small>Got a question or need a hand? You&rsquo;ll get a reply from the person who built Travel Kitty within one business day.</small></div></li>
         </ul>
       </div>
 
     </div>
 
     <p class="everyone">No ads. No trackers. No analytics. On both plans.</p>
+
+    <div class="closing">
+      <h3>Travel together. Keep the money simple.</h3>
+      <p>Whether you&rsquo;re heading away for a weekend or planning a big
+      adventure, Travel Kitty helps you keep track of shared expenses and
+      settle up without the awkwardness.</p>
+      <p>Start for free, and upgrade whenever you&rsquo;re ready for a little
+      more.</p>
+    </div>
   </section>
 
   <!-- ============ SIGN IN ============ -->
