@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Travel Kitty</title>
-<meta name="description" content="Travel Kitty is a shared travel expense app for Android. Set a daily budget, log what you spend, split it across everyone, and see who owes who, any time you check. Coming soon to Google Play.">
+<meta name="description" content="Travel Kitty is a shared travel expense app for Android. Set a daily budget, log what you spend, split it across everyone, and see who owes who, any time you check. Get it on Google Play.">
 <style>
   :root {
     color-scheme: light dark;
@@ -60,16 +60,9 @@
   .mark { width: 84px; height: 84px; margin: 0 auto 1.1rem; display: block; border-radius: 20px; box-shadow: var(--shadow); }
   .hero h1 { font-size: clamp(2.3rem, 7vw, 3.4rem); margin: 0 0 .4rem; }
   .tag { font-size: clamp(1.05rem, 3.2vw, 1.3rem); color: var(--muted); margin: 0 auto 1.6rem; max-width: 34rem; }
-  .pill {
-    display: inline-flex; align-items: center; gap: .5rem;
-    background: var(--wash); color: var(--gold-ink);
-    border: 1px solid rgba(227,160,8,.35);
-    border-radius: 999px; padding: .35rem .85rem;
-    font-size: .82rem; font-weight: 700; margin: 0 0 1.5rem;
-  }
-  .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--gold); flex: none; }
 
-  .cta-row { display: flex; gap: .7rem; justify-content: center; flex-wrap: wrap; }
+  .cta-row { display: flex; gap: .7rem; justify-content: center; align-items: center; flex-wrap: wrap; }
+  .badge img { display: block; height: 76px; width: auto; }
   .btn {
     display: inline-block; padding: .85rem 1.5rem; border-radius: 12px;
     text-decoration: none; font-weight: 700; font-size: 1rem;
@@ -207,15 +200,14 @@
       <ellipse cx="620" cy="516" rx="27" ry="36" fill="#E3A008" transform="rotate(26 620 516)"/>
     </svg>
 
-    <p class="pill"><span class="dot"></span> Coming soon to Google Play</p>
-
     <h1>Travel Kitty</h1>
     <p class="tag">Track a trip together. Know who owes who, any time.</p>
 
     <div class="cta-row">
-      <a class="btn btn-primary" href="#signin">Already using it? Sign in</a>
+      <a class="badge" href="https://play.google.com/store/apps/details?id=nz.travelkitty.app"><img src="google-play-badge.png" alt="Get it on Google Play" width="646" height="250"></a>
+      <a class="btn btn-ghost" href="#signin">Already using it? Sign in</a>
     </div>
-    <p class="under-cta">For Android &middot; free to use &middot; no ads</p>
+    <p class="under-cta">Android app &middot; sign in to view on any device &middot; free to start &middot; no ads</p>
   </header>
 
   <!-- ============ WHAT IT IS ============ -->
