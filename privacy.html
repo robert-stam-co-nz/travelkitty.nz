@@ -31,7 +31,7 @@
 <body>
 
 <h1>Privacy Policy</h1>
-<p class="updated">Travel Kitty · last updated 28 September 2026</p>
+<p class="updated">Travel Kitty · last updated 19 October 2026</p>
 
 <p>Travel Kitty is a shared travel-expense tracker. You record what a trip
 costs, optionally with other people, and the app works out who owes what. This
@@ -59,6 +59,7 @@ too; see <a href="#banks">Connecting a bank</a>.</p>
   <tr><td>Expenses</td><td>Amount, currency, exchange rate, category, description, date, who paid, and who it is split between.</td></tr>
   <tr><td>Expense photos</td><td>Optional. Only if you attach one.</td></tr>
   <tr><td>Expense locations</td><td>Optional. Only if you pin one on the map. Stored as coordinates and, where available, a place name.</td></tr>
+  <tr><td>Place search count</td><td>Premium only. How many places you have picked from place search this month, so the monthly allowance can be applied. Just a number for each month: not what you searched for, and not where.</td></tr>
   <tr><td>Surplus transactions and settlements</td><td>Amounts, notes and dates you enter to adjust or settle a trip's balance.</td></tr>
   <tr><td>Invitations</td><td>If you invite someone by email, that address is stored until the invitation is accepted, declined or withdrawn.</td></tr>
 </table>
@@ -74,6 +75,13 @@ to a place, and it uses your position at that moment to centre the map. It does
 not track you, does not read your location in the background, and works
 normally if you refuse the permission — you can drag the map to the spot
 instead.</p>
+
+<p>On Premium you can also find a place by typing its name. When you do, the
+app sends what you typed to Google, together with your position at that moment
+— or, if it does not have your position, the point the map is showing — so
+Google can suggest places near you. See <a href="#places">Google Places</a>
+below. Nothing is sent if you only tap the map, and nothing is sent on the
+free plan.</p>
 
 <h2>Who else can see it</h2>
 <p>People on the same trip. That is the point of the app: if you add someone to
@@ -103,7 +111,8 @@ anything is stored. See "Other services the app talks to" below.</p>
 
 <h2>Other services the app talks to</h2>
 <ul>
-  <li><strong>Google Maps</strong> — the maps are drawn by the Google Maps SDK. When you open one, it contacts Google to fetch map data, which necessarily reveals your device's IP address and which part of the world you are looking at, and Google receives information about that use under its own <a href="https://policies.google.com/privacy">privacy policy</a>. No account data, no expense amounts and no trip details are sent. Google's own "show my location" layer is switched off in this app, so the SDK is not given your position — the "pin where I am" button asks the operating system instead, and that coordinate stays on your device unless you save the pin.</li>
+  <li><strong>Google Maps</strong> — the maps are drawn by the Google Maps SDK. When you open one, it contacts Google to fetch map data, which necessarily reveals your device's IP address and which part of the world you are looking at, and Google receives information about that use under its own <a href="https://policies.google.com/privacy">privacy policy</a>. No account data, no expense amounts and no trip details are sent. Google's own "show my location" layer is switched off in this app, so the SDK is not given your position — the "pin where I am" button asks the operating system instead, and that coordinate stays on your device unless you save the pin or search for a place by name (next item).</li>
+  <li id="places"><strong>Google Places</strong> — only on Premium, and only when you type in <em>Place name</em> while pinning an expense. What you type is sent to Google with your position, or the point the map is showing, so that Google can suggest places nearby; when you pick one, the app asks Google where exactly it is. Google receives this under its own <a href="https://policies.google.com/privacy">privacy policy</a>. No account data, no expense amounts and no trip details are sent.</li>
   <li><strong>Exchange rates</strong> — when an expense is in a currency other than the trip's, the app fetches a rate from a public exchange-rate API. The request contains only the currency codes: no personal data, no amounts.</li>
   <li><strong>Plaid</strong> — only if you connect a bank on Premium. Plaid is the service that connects the app to your bank; see <a href="#banks">Connecting a bank</a> below.</li>
   <li><strong>Google Cloud (Gemini)</strong> — only when you import transactions from a connected bank on Premium, and only to work out what kind of business each shop name is. What is sent is a list of shop names; see <a href="#categorising">Sorting imported transactions</a> below, which sets out what is sent and what is not.</li>
@@ -255,8 +264,8 @@ record of a trip.</p>
 
 <h2>Deleting your account and data</h2>
 <p>In the app: <strong>Settings → Profile → Delete account</strong>. This
-permanently removes your profile, your custom categories, your sign-in
-credentials, and every trip you own — including that trip's expenses and photos,
+permanently removes your profile, your custom categories, your place search
+count, your sign-in credentials, and every trip you own — including that trip's expenses and photos,
 for all of its members. Trips owned by someone else are left alone; you are
 removed from them, and expenses you added to them remain, because the trip's
 balances would not add up without them.</p>
