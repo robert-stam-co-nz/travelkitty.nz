@@ -31,7 +31,7 @@
 <body>
 
 <h1>Privacy Policy</h1>
-<p class="updated">Travel Kitty · last updated 19 October 2026</p>
+<p class="updated">Travel Kitty · last updated 31 October 2026</p>
 
 <p>Travel Kitty is a shared travel-expense tracker. You record what a trip
 costs, optionally with other people, and the app works out who owes what. This
@@ -47,8 +47,9 @@ about this policy or about your data go to
 <p>Only what you type into it, plus what is needed to sign you in — and, if
 you subscribe, what Google Play tells us about that subscription, which is
 described under <a href="#subscriptions">Subscriptions and payment</a> below.
-If you connect a bank on Premium, some details of that connection are kept
-too; see <a href="#banks">Connecting a bank</a>.</p>
+If you set up your own bank connection through Akahu, what you import is kept
+too; see <a href="#banks">Connecting your own bank through Akahu</a>. If you scan a receipt, the
+photo of it is sent to be read; see <a href="#receipts">Scanning a receipt</a>.</p>
 
 <table>
   <tr><th>Data</th><th>Why</th></tr>
@@ -58,6 +59,8 @@ too; see <a href="#banks">Connecting a bank</a>.</p>
   <tr><td>Trips</td><td>Name, dates, budget, currency, and an optional cover photo.</td></tr>
   <tr><td>Expenses</td><td>Amount, currency, exchange rate, category, description, date, who paid, and who it is split between.</td></tr>
   <tr><td>Expense photos</td><td>Optional. Only if you attach one.</td></tr>
+  <tr><td>Receipts</td><td>Optional. Only if you scan one. Kept with the expense, and private to you.</td></tr>
+  <tr><td>Receipt scan count</td><td>How many receipts you have scanned, so the allowance can be applied, and a fingerprint of each recent image, so scanning the same receipt twice counts once. The fingerprint can't be turned back into the image.</td></tr>
   <tr><td>Expense locations</td><td>Optional. Only if you pin one on the map. Stored as coordinates and, where available, a place name.</td></tr>
   <tr><td>Place search count</td><td>Premium only. How many places you have picked from place search this month, so the monthly allowance can be applied. Just a number for each month: not what you searched for, and not where.</td></tr>
   <tr><td>Surplus transactions and settlements</td><td>Amounts, notes and dates you enter to adjust or settle a trip's balance.</td></tr>
@@ -87,7 +90,9 @@ free plan.</p>
 <p>People on the same trip. That is the point of the app: if you add someone to
 a trip, they can see that trip's expenses, amounts, descriptions, categories,
 photos, pinned locations, and your display name and avatar colour. They cannot
-see your email address, your other trips, or anything else about your account.</p>
+see your email address, your other trips, or anything else about your account.
+They cannot see a receipt you scan, either: it is private to you, even though
+the expense it belongs to is shared.</p>
 
 <h2>Where it is stored</h2>
 <p>On your device, and on Google Firebase in the <code>us-east1</code>
@@ -99,7 +104,7 @@ stored outside New Zealand.</strong> Specifically:</p>
 <ul>
   <li><strong>Firebase Authentication</strong> — your email address and sign-in credentials. Passwords are held by Google, hashed; the developer never sees them.</li>
   <li><strong>Cloud Firestore</strong> — trips, expenses, categories, balances.</li>
-  <li><strong>Cloud Storage</strong> — photos you attach.</li>
+  <li><strong>Cloud Storage</strong> — photos you attach, and receipts backed up on Premium.</li>
   <li><strong>Firebase App Check</strong> — verifies requests come from the real app rather than a script.</li>
 </ul>
 <p>Google processes this data as a service provider. Their handling is covered
@@ -114,48 +119,53 @@ anything is stored. See "Other services the app talks to" below.</p>
   <li><strong>Google Maps</strong> — the maps are drawn by the Google Maps SDK. When you open one, it contacts Google to fetch map data, which necessarily reveals your device's IP address and which part of the world you are looking at, and Google receives information about that use under its own <a href="https://policies.google.com/privacy">privacy policy</a>. No account data, no expense amounts and no trip details are sent. Google's own "show my location" layer is switched off in this app, so the SDK is not given your position — the "pin where I am" button asks the operating system instead, and that coordinate stays on your device unless you save the pin or search for a place by name (next item).</li>
   <li id="places"><strong>Google Places</strong> — only on Premium, and only when you type in <em>Place name</em> while pinning an expense. What you type is sent to Google with your position, or the point the map is showing, so that Google can suggest places nearby; when you pick one, the app asks Google where exactly it is. Google receives this under its own <a href="https://policies.google.com/privacy">privacy policy</a>. No account data, no expense amounts and no trip details are sent.</li>
   <li><strong>Exchange rates</strong> — when an expense is in a currency other than the trip's, the app fetches a rate from a public exchange-rate API. The request contains only the currency codes: no personal data, no amounts.</li>
-  <li><strong>Plaid</strong> — only if you connect a bank on Premium. Plaid is the service that connects the app to your bank; see <a href="#banks">Connecting a bank</a> below.</li>
-  <li><strong>Google Cloud (Gemini)</strong> — only when you import transactions from a connected bank on Premium, and only to work out what kind of business each shop name is. What is sent is a list of shop names; see <a href="#categorising">Sorting imported transactions</a> below, which sets out what is sent and what is not.</li>
+  <li><strong>Akahu</strong> — only if you set it up yourself. Akahu is a New Zealand service that links apps to banks; see <a href="#banks">Connecting your own bank through Akahu</a> below.</li>
+  <li><strong>Google Cloud (Gemini)</strong> — for two things only. When you scan a receipt, on either plan, the photo of it is sent to be read; see <a href="#receipts">Scanning a receipt</a> below. When you import transactions through Akahu on Premium, a list of shop names is sent so we can work out what kind of business each one is; see <a href="#categorising">Sorting imported transactions</a> below. Each section sets out what is sent and what is not.</li>
   <li><strong>Firebase Crashlytics</strong> — when the app crashes or hits an error it could not handle, a report is sent so the fault can be found and fixed. It contains the technical detail of the failure: the stack trace, the type of device, the version of Android and of the app, and how long the app had been running. It also carries an installation identifier, which is generated by the app and is not your account, your email address or anything you typed. <strong>Your trips, expenses, amounts, photos and pinned locations are not in a crash report.</strong> Reports are sent automatically and there is currently no way to turn them off from inside the app; if you would rather not send them, that is a reason not to install it, and one worth telling us about at the address above.</li>
 </ul>
 
-<h2 id="banks">Connecting a bank</h2>
-<p>Premium lets you connect a bank and pull its transactions into a trip. The
-connection is made through <a href="https://plaid.com">Plaid</a>, a service
-that links apps to banks.</p>
+<h2 id="banks">Connecting your own bank through Akahu</h2>
+<p>Travel Kitty has no bank connection of its own. If you bank in New Zealand
+and want your transactions brought in, you can set one up yourself, on either
+plan, through <a href="https://www.akahu.nz">Akahu</a>, a New Zealand service
+that links apps to banks. You create your own personal app with Akahu, and it
+gives you two tokens, which you enter in <strong>Settings → Advanced →
+Akahu</strong>. If you don't do that, nothing in this section applies to you.</p>
 
-<p><strong>You sign in to your bank on Plaid's own screen, and neither the app
-nor our server ever sees your bank username or password.</strong> Plaid then
-gives our server a token that lets it ask Plaid for new transactions on the
-accounts you chose. Plaid handles your bank data under its own
-<a href="https://plaid.com/legal/#end-user-privacy-policy">end user privacy
-policy</a>.</p>
+<p><strong>Your arrangement with Akahu is your own.</strong> You connect your
+bank on Akahu's site, under Akahu's own terms. Travel Kitty isn't part of that
+step, and neither the app nor our server ever sees your bank username or
+password.</p>
 
-<p>We ask Plaid for transactions only. We do not ask for your identity details
-or your account and routing numbers. What we keep for each connection:</p>
-<ul>
-  <li>the bank's name;</li>
-  <li>for each account: its name, its type, its currency and the last four digits of its number;</li>
-  <li>which accounts you chose to track, and when they were last checked;</li>
-  <li>the token from Plaid, which is held on our server and cannot be read by the app, not even by you.</li>
-</ul>
-<p>Your balances are not stored.</p>
+<p><strong>Your tokens stay on your phone.</strong> They are kept in your phone's
+secure storage, under your Travel Kitty account, and are sent only to Akahu.
+They are not on our servers or in your Travel Kitty account, so we can't read
+them. Someone else signing in on the same phone won't see them, and another phone
+needs them entered again. Anyone who has them can read your bank transactions,
+so don't share them.</p>
 
-<p><strong>Transactions are not stored on our servers when they are fetched.</strong>
-They are passed to your phone for you to review, and only the ones you import
-are kept. They are kept as expenses, or as credits if you choose to bring money
-in, on the trip you imported them into. An imported expense holds the date, the
-amount, the currency and the shop name, along with Plaid's own reference for
-the transaction and the account. Everyone on that trip can see it, like any
-other expense.</p>
+<p><strong>Your transactions don't pass through our servers on the way in.</strong>
+When you import, your phone asks Akahu directly for the settled transactions on
+the accounts you ticked, for the dates shown. Your balances and account numbers
+are not saved.</p>
 
-<p>You can disconnect a bank at any time from <strong>Settings → Connected
-banks</strong>. Disconnecting tells Plaid to end our access and deletes the
-token. Expenses you have already imported stay on their trips. If your
-subscription ends, your banks are disconnected the same way.</p>
+<p>Importing adds those transactions to the trip you imported them into, as
+expenses or as money in. Each one holds the date, the amount, the currency and
+the bank's description, along with Akahu's own reference for the transaction and
+the account. <strong>Everyone on that trip can see it, like any other
+expense.</strong> Where the bank gives the account number of whoever paid you, we
+keep a fingerprint of that number, never the number itself, so the app can
+recognise the same payer next time. If you delete an imported expense, the trip
+keeps Akahu's reference for it, so that the next import doesn't bring it back.
+Your phone also remembers how far each account has been imported.</p>
+
+<p>To stop, go to <strong>Settings → Advanced → Akahu</strong> and choose
+<strong>Remove from this phone</strong>. Expenses you have already imported stay
+on their trips. That only removes the tokens from Travel Kitty: to end Akahu's
+access to your bank, do that in your Akahu account.</p>
 
 <h2 id="categorising">Sorting imported transactions</h2>
-<p>When you import transactions from a connected bank, the app can work out
+<p>When you import transactions through Akahu on Premium, the app can work out
 what kind of business each shop is, so the expenses arrive already sorted into
 categories rather than all in one pile.</p>
 
@@ -168,9 +178,9 @@ it is the payer's name instead of a shop's.</p>
 the rest of your data is stored in.</strong> Google serves its current models
 from a global endpoint, routing each request to whichever data centre can
 answer it, so the shop names may be processed outside the United States.
-<strong>They are not stored there.</strong> The list is sent, the model
-answers, and nothing is kept — your trips, expenses and photos stay in
-<code>us-east1</code>, and this changes nothing about where they live.</p>
+<strong>We don't keep the list, and your trips, expenses and photos stay in
+<code>us-east1</code>.</strong> Google may log what it is sent to check for
+abuse of its service, under its Google Cloud terms.</p>
 
 <p><strong>The amounts, the dates, your balance and your account number are not
 sent, and neither is anything about who paid or which trip it is for.</strong>
@@ -182,14 +192,45 @@ is not an option it has.</p>
 <p>Google processes that list on our instructions, as a service provider, and
 <strong>does not use it to train their models</strong> — the same relationship
 described under "Where it is stored" above, on the same Google Cloud terms.
-Nothing is sent for transactions you do not import, and nothing is sent on the
-free plan.</p>
+Nothing is sent for transactions you do not import, and sorting sends nothing
+on the free plan.</p>
 
 <p>A shop the model cannot place is left uncategorised rather than guessed at,
 and you can categorise it yourself. <strong>Correcting a category teaches the
 app, not the model.</strong> The correction is saved as a rule on your own
 account and applied before anything is sent next time, so a shop you have
 already named is never asked about again.</p>
+
+<h2 id="receipts">Scanning a receipt</h2>
+<p>When you tap <strong>Scan a receipt</strong> on Add expense, Travel Kitty
+reads the photo and fills in the amount, currency, date, shop and category for
+you to check. Nothing is saved until you save the expense.</p>
+
+<p>To read it, we send <strong>the photo of the receipt</strong> to Google's
+Gemini model running on Google Cloud, through our server, along with the trip's
+currency and dates and the names of its categories. This happens on both plans,
+and only when you scan.</p>
+
+<p class="note"><strong>A receipt can show more than the total.</strong> Whatever
+is printed on it goes with the photo, such as the last digits of your card, your
+name, or a loyalty number. If you'd rather not send that, type the expense in
+instead.</p>
+
+<p><strong>Your name, your email address, the trip's name and your other
+expenses are not sent.</strong> Our server keeps no copy of the photo or of what
+the model read from it, and neither goes in our logs.</p>
+
+<p>Like bank sorting, this request is not confined to <code>us-east1</code>, so
+the photo may be processed outside the United States. Google processes it on our
+instructions, as a service provider, and <strong>does not use it to train their
+models</strong>. Google may log what it is sent to check for abuse of its
+service, under its Google Cloud terms.</p>
+
+<p><strong>Where the receipt is kept.</strong> On the free plan it stays on your
+phone. On Premium it is also backed up to a private folder that only your account
+can read. Either way, other people on the trip can't see it, and it isn't added
+to your photo library. Deleting the expense removes its receipt, whoever deletes
+the expense, and so does removing the receipt from the expense.</p>
 
 <h2 id="subscriptions">Subscriptions and payment</h2>
 <p><strong>We never see how you pay.</strong> Premium is bought through Google
@@ -243,10 +284,12 @@ It goes into your photo library, in an album called Travel Kitty, at the moment
 you take it — so it is backed up by whatever already backs up your photos, and
 it stays yours whatever happens to your account or to this app. That copy is
 not ours and we cannot reach it. Photos you pick from your library are already
-there, and are not duplicated.</p>
+there, and are not duplicated. Receipts are different: a receipt you scan stays
+inside Travel Kitty, and is not saved to your photo library.</p>
 
 <p><strong>Photos are the exception, and only on a paid plan.</strong> Storing
-photos on our servers is part of what a subscription pays for. If a
+photos and receipts on our servers is part of what a subscription pays for, and
+a backed-up receipt counts as a photo in what follows. If a
 subscription ends, we may remove uploaded photos from our servers after a
 period, rather than store them indefinitely for an account that is no longer
 subscribed. We do not set that period here, because it depends on how much is
@@ -265,18 +308,17 @@ record of a trip.</p>
 <h2>Deleting your account and data</h2>
 <p>In the app: <strong>Settings → Profile → Delete account</strong>. This
 permanently removes your profile, your custom categories, your place search
-count, your sign-in credentials, and every trip you own — including that trip's expenses and photos,
+count, your receipt scan count, your receipts, your sign-in credentials, and every trip you own — including that trip's expenses and photos,
 for all of its members. Trips owned by someone else are left alone; you are
 removed from them, and expenses you added to them remain, because the trip's
 balances would not add up without them.</p>
 <p>It also removes the subscription records described above — the purchase
 token, the plan, its state and expiry, and the link between the token and your
 account.</p>
-<p>It disconnects every bank you connected, telling Plaid to end our access,
-and deletes the tokens that gave our server that access, along with the record
-of which banks and accounts you connected. If Plaid cannot be reached at that
-moment, the disconnection is retried automatically within a week, and that
-bank's record is deleted once Plaid confirms.</p>
+<p>It also clears your Akahu tokens from the phone you delete the account on. If
+you added them on another phone too, remove them there. Deleting your Travel
+Kitty account doesn't end Akahu's access to your bank: do that in your Akahu
+account.</p>
 <p class="note"><strong>It does not cancel a Premium subscription, and nothing
 here can.</strong> That is an agreement between you and Google: it renews, and
 charges, until you cancel it in Google Play — <strong>Play Store → your
