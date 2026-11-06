@@ -11,7 +11,7 @@
     --gold: #E3A008;
     --gold-ink: #8A6100;
     --ink: #10192B;
-    --muted: #6B7383;
+    --muted: #5F6779;
     --bg: #F5F6FA;
     --card: #FFFFFF;
     --line: #E3E6ED;
@@ -135,9 +135,20 @@
     font-size: .76rem; font-weight: 800; letter-spacing: .08em;
     text-transform: uppercase; color: var(--gold-ink); margin: 1.5rem 0 .25rem;
   }
-  .closing { text-align: center; max-width: 36rem; margin: 3rem auto 0; }
-  .closing h3 { font-size: 1.35rem; margin: 0 0 .6rem; }
-  .closing p { color: var(--muted); margin: 0 0 .7rem; }
+
+  /* ---------- get it ---------- */
+  .get {
+    background: var(--wash); border: 1px solid rgba(227,160,8,.35);
+    border-radius: 22px; padding: 2.5rem 1.5rem; text-align: center;
+  }
+  .get h2 { font-size: clamp(1.6rem, 4.5vw, 2.1rem); margin: 0 0 .6rem; }
+  .get > p { color: var(--muted); max-width: 34rem; margin: 0 auto 1.5rem; }
+  .get > p.under-cta { margin: 1rem auto 0; }
+  .get .iphone {
+    max-width: 30rem; margin: 1.75rem auto 0; padding-top: 1.25rem;
+    border-top: 1px solid rgba(227,160,8,.35); font-size: .95rem;
+  }
+  .get .iphone b { color: var(--ink); }
 
   /* ---------- join ---------- */
   .join {
@@ -224,25 +235,26 @@
     </div>
     <div class="duo">
       <div>
-        <b>Every expense, captured</b>
+        <b>Every expense, split for you</b>
         <span>Scan a receipt, attach a photo, drop a pin, log it in any
         currency. Travel Kitty splits it across whoever shared it,
         automatically.</span>
       </div>
       <div>
-        <b>Built for the road</b>
-        <span>No signal, no problem. Expenses save straight to your phone and
-        sync the moment you&rsquo;re back online.</span>
+        <b>Works with no signal</b>
+        <span>Expenses save straight to your phone and sync the moment
+        you&rsquo;re back online.</span>
       </div>
       <div>
         <b>Your iPhone friends are included</b>
-        <span>Invite them by email. They can follow every expense and see who
-        owes who in their browser, with nothing to install.</span>
+        <span>Add their email address and Travel Kitty gives you a message to
+        send them. They can follow every expense and see who owes who in their
+        browser, with nothing to install.</span>
       </div>
       <div>
-        <b>Your privacy matters</b>
-        <span>No ads, no trackers, no analytics. Premium lets you export any
-        trip to a spreadsheet.</span>
+        <b>No ads, no trackers</b>
+        <span>No analytics either. And with Premium, you can export any trip
+        to a spreadsheet.</span>
       </div>
     </div>
   </section>
@@ -251,7 +263,7 @@
   <section id="look">
     <div class="sec-head">
       <p class="eyebrow">A look inside</p>
-      <h2>See it in action</h2>
+      <h2>From the first coffee to settling up</h2>
       <p class="rail-hint">Real screens from the app, shown with a sample trip.</p>
     </div>
 
@@ -316,9 +328,9 @@
 
       <div class="plan">
         <h3>Free</h3>
-        <p class="price"><b>NZ$0</b>. No card, no trial, no ads. Just get started.</p>
+        <p class="price"><b>NZ$0</b>. No card, no trial, no ads.</p>
         <p class="plan-intro">Everything you need to keep track of shared travel expenses, without spending a cent.</p>
-        <p class="grp">Everything you need to run a trip</p>
+        <p class="grp">Run the trip</p>
         <ul class="feat">
           <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true" style="color:var(--tick)"><circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.6"/><path d="M5 8.2l2 2 4-4.2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
             <div><b>One active trip, unlimited archived</b><small>Run one trip of your own at a time, for free. When it&rsquo;s over, archive it to start the next. Archived trips stay to look back on, and trips you&rsquo;re invited to don&rsquo;t count, so join as many as you like.</small></div></li>
@@ -332,7 +344,7 @@
         <p class="grp">Know where everyone stands</p>
         <ul class="feat">
           <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true" style="color:var(--tick)"><circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.6"/><path d="M5 8.2l2 2 4-4.2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            <div><b>Charts, payments, top-ups and maps</b><small>See where the money goes in Insights, and get the fewest payments that settle everyone up. Keep track of top-ups and refunds. Pin the places you spent at on the map, with directions back to each one.</small></div></li>
+            <div><b>Charts, settling up, top-ups and maps</b><small>See where the money goes in Insights, and get the fewest payments that settle everyone up. Keep track of top-ups and refunds. Pin the places you spent at on the map, with directions back to each one.</small></div></li>
           <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true" style="color:var(--tick)"><circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.6"/><path d="M5 8.2l2 2 4-4.2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
             <div><b>Import transactions from your bank</b><small>Bank in New Zealand? You can bring in your own transactions through Akahu. It takes a little setting up: you make a personal app with Akahu, then add its tokens under Settings &rarr; Advanced. On Free, transactions arrive in Uncategorised for you to sort.</small></div></li>
           <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true" style="color:var(--tick)"><circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.6"/><path d="M5 8.2l2 2 4-4.2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -368,21 +380,32 @@
             <div><b>Export your expenses</b><small>Want a copy of everything? Export any trip&rsquo;s expenses as a CSV file you can open in any spreadsheet.</small></div></li>
           <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><circle cx="8" cy="8" r="7" fill="#E3A008"/><path d="M5 8.2l2 2 4-4.2" stroke="#10192B" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
             <div><b>Make your own categories</b><small>Everyone tracks spending a little differently. Make your own categories to suit the way you travel.</small></div></li>
-          <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><circle cx="8" cy="8" r="7" fill="#E3A008"/><path d="M5 8.2l2 2 4-4.2" stroke="#10192B" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            <div><b>A reply within one business day</b><small>Got a question or need a hand? Email us, and the person who built Travel Kitty will get back to you within one business day.</small></div></li>
         </ul>
       </div>
 
     </div>
 
     <p class="everyone">No ads. No trackers. No analytics. On both plans.</p>
+  </section>
 
-    <div class="closing">
-      <h3>Travel together. Keep the money simple.</h3>
-      <p>Whether you&rsquo;re heading away for a weekend or planning a big
-      adventure, Travel Kitty helps you keep track of shared expenses and
-      settle up without the awkwardness.</p>
-      <p>Start free. Upgrade whenever you need more.</p>
+  <!-- ============ GET IT ============ -->
+  <section id="get">
+    <div class="get">
+      <h2>Ready for your next trip?</h2>
+      <p>Whether it&rsquo;s a weekend away or a big adventure, start
+      free. No card, no trial, no ads. Upgrade whenever you need more.</p>
+
+      <div class="cta-row">
+        <!-- Same link as the hero badge: the open test until Production is
+             live, then play.google.com/store/apps/details?id=nz.travelkitty.app. -->
+        <a class="badge" href="https://play.google.com/apps/testing/nz.travelkitty.app"><img src="google-play-badge.png" alt="Join the open test on Google Play" width="646" height="250"></a>
+      </div>
+      <p class="under-cta">Now in open testing. Join with your Google account, then install it.</p>
+
+      <p class="iphone"><b>Friends on an iPhone?</b> Add their email address
+      to the trip and send them the message Travel Kitty writes for you. They
+      sign in with that address and follow the trip in their browser, with
+      nothing to install.</p>
     </div>
   </section>
 
