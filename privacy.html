@@ -58,15 +58,15 @@ receipt, we send the photo of it to be read; see
   <tr><td>Email address</td><td>It identifies your account, and it&rsquo;s how you sign in and reset your password. If you sign in with Google, it comes from your Google account.</td></tr>
   <tr><td>Display name</td><td>Shown to the other people on trips you share, so they can see who paid.</td></tr>
   <tr><td>Avatar colour</td><td>A colour you choose, so people are easy to tell apart in the list of travellers.</td></tr>
-  <tr><td>Trips</td><td>Name, dates, budget, currency, and a cover photo if you add one.</td></tr>
+  <tr><td>Trips</td><td>Name, dates, budget, currency, and a cover photo if you add one. A cover photo is uploaded and shared with the trip on both plans.</td></tr>
   <tr><td>Expenses</td><td>Amount, currency, exchange rate, category, description, date, who paid, and who it&rsquo;s split between.</td></tr>
-  <tr><td>Expense photos</td><td>Optional. Only if you attach one.</td></tr>
+  <tr><td>Place photos</td><td>Optional. Only if you take or attach one. On Free, it stays on your phone and nobody else sees it. On Premium, it&rsquo;s uploaded and shared with everyone on the trip.</td></tr>
   <tr><td>Receipts</td><td>Optional. Only if you scan one. Kept with the expense, and private to you.</td></tr>
   <tr><td>Receipt scan count</td><td>How many receipts you&rsquo;ve scanned, so we can apply your allowance. We also keep a fingerprint of each recent image, so scanning the same receipt twice counts once. The fingerprint can&rsquo;t be turned back into the image.</td></tr>
   <tr><td>Expense locations</td><td>Optional. Only if you pin one on the map. Stored as coordinates and, where there is one, a place name.</td></tr>
   <tr><td>Place search count</td><td>Premium only. How many places you&rsquo;ve picked from place search this month, so we can apply the monthly allowance. It&rsquo;s just a number for each month: not what you searched for, and not where.</td></tr>
   <tr><td>Top-ups and settlements</td><td>Amounts, notes and dates you enter to adjust or settle a trip&rsquo;s balance.</td></tr>
-  <tr><td>Invitations</td><td>If you invite someone by email address, we keep that address until the invitation is accepted, declined or withdrawn.</td></tr>
+  <tr><td>Invitations</td><td>If you invite someone by email address, we keep that address until you withdraw or clear the invitation, or the trip is deleted. Accepting or declining doesn&rsquo;t remove it on its own.</td></tr>
 </table>
 
 <p>Travel Kitty does <strong>not</strong> collect your contacts, your
@@ -91,25 +91,31 @@ map, and nothing is sent on the Free plan.</p>
 <h2>Who else can see it</h2>
 <p>The people on the same trip. That&rsquo;s the point of Travel Kitty. When you
 add someone to a trip, they can see that trip&rsquo;s expenses, amounts,
-descriptions, categories, photos and pinned locations, plus your display name
-and avatar colour.</p>
+descriptions, categories, pinned locations and cover photo, plus your display
+name and avatar colour. On Premium, they also see your place photos. On Free,
+those stay on your phone.</p>
 <p>They can&rsquo;t see your email address, your other trips, or anything else
 about your account. They can&rsquo;t see a receipt you scan either: it&rsquo;s
 private to you, even though the expense it belongs to is shared.</p>
 
 <h2>Where it&rsquo;s stored</h2>
-<p>On your device, and on Google Firebase in the <code>us-east1</code> region
+<p>On your phone, and on Google Firebase in the <code>us-east1</code> region
 (South Carolina, United States). <strong>This means your information is stored
 outside New Zealand.</strong></p>
 <p>Why there? People use Travel Kitty all over the world. A database has to be
 given one region when it&rsquo;s created, and that can&rsquo;t be changed
 afterwards. We chose this one as the closest compromise for people across the
 Americas and Europe.</p>
+<p>If you sign in at <a href="https://view.travelkitty.nz">view.travelkitty.nz</a>,
+your browser also keeps a copy of the trips you&rsquo;re on, and the expenses
+of any you open. Signing out
+doesn&rsquo;t clear that copy, so on a computer you share, use a private
+window.</p>
 <p>In detail:</p>
 <ul>
   <li><strong>Firebase Authentication</strong>: your email address and sign-in details. Google holds passwords in hashed (scrambled) form, and we never see them.</li>
   <li><strong>Cloud Firestore</strong>: trips, expenses, categories, balances.</li>
-  <li><strong>Cloud Storage</strong>: photos you attach, and receipts backed up on Premium.</li>
+  <li><strong>Cloud Storage</strong>: trip cover photos, and on Premium, place photos and backed-up receipts.</li>
   <li><strong>Firebase App Check</strong>: checks that requests come from the real app rather than a script.</li>
 </ul>
 <p>Google handles this data for us as a service provider. How it does that is
@@ -121,7 +127,7 @@ stored there. See &ldquo;Other services Travel Kitty uses&rdquo; below.</p>
 
 <h2>Other services Travel Kitty uses</h2>
 <ul>
-  <li><strong>Google Maps</strong>: Google Maps draws the maps. When you open one, it contacts Google to fetch the map. That means Google sees your device&rsquo;s IP address and which part of the world you&rsquo;re looking at, and it receives information about that use under its own <a href="https://policies.google.com/privacy">privacy policy</a>. No account details, expense amounts or trip details are sent. Google&rsquo;s own &ldquo;show my location&rdquo; layer is turned off in Travel Kitty, so Google Maps isn&rsquo;t given where you are. The &ldquo;pin where I am&rdquo; button asks your phone instead. That position stays on your phone unless you save the pin or search for a place by name (next item).</li>
+  <li><strong>Google Maps</strong>: Google Maps draws the maps. When you open one, it contacts Google to fetch the map. That means Google sees your device&rsquo;s IP address and which part of the world you&rsquo;re looking at, and it receives information about that use under its own <a href="https://policies.google.com/privacy">privacy policy</a>. No account details, expense amounts or trip details are sent. Google&rsquo;s own &ldquo;show my location&rdquo; layer is turned off in Travel Kitty, so Google Maps isn&rsquo;t given where you are. The <strong>Use my current location</strong> button asks your phone instead. That position stays on your phone unless you save the pin or search for a place by name (next item).</li>
   <li id="places"><strong>Google Places</strong>: only on Premium, and only when you type in <em>Place name</em> while pinning an expense. What you type is sent to Google with where you are, or the point the map is showing, so Google can suggest places nearby. When you pick one, Travel Kitty asks Google exactly where it is. Google receives this under its own <a href="https://policies.google.com/privacy">privacy policy</a>. No account details, expense amounts or trip details are sent.</li>
   <li><strong>Exchange rates</strong>: when an expense is in a different currency from the trip&rsquo;s, Travel Kitty gets a rate from a public exchange-rate service. The request holds only the currency codes: no personal details and no amounts.</li>
   <li><strong>Akahu</strong>: only if you set it up yourself. Akahu is a New Zealand service that links apps to banks. See <a href="#banks">Connecting your own bank through Akahu</a> below.</li>
@@ -350,10 +356,10 @@ ask for deletion by email.</p>
 
 <h2>Your rights</h2>
 <p>You can see everything Travel Kitty holds about you inside the app, and
-export a trip&rsquo;s expenses to a CSV file (<strong>Settings → Import &amp;
-export data</strong>). You can also correct anything by editing it, and delete
-any of it. If
-you&rsquo;d rather ask for a copy or a correction by email, write to
+on Premium, export a trip&rsquo;s expenses to a CSV file from
+<strong>Settings</strong>. You can also correct anything by editing it, and delete
+any of it. On
+either plan, if you&rsquo;d rather ask for a copy or a correction by email, write to
 <a href="mailto:support@travelkitty.nz">support@travelkitty.nz</a>.</p>
 
 <h2>Children</h2>
