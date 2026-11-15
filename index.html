@@ -3,8 +3,63 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Travel Kitty</title>
-<meta name="description" content="Travel Kitty is a shared travel expense app for Android. Set a daily budget, log what you spend, split it across everyone, and see who owes what, any time you check. Get it on Google Play.">
+<title>Travel Kitty: split travel expenses with your group</title>
+<meta name="description" content="Travel Kitty is a shared travel expense app for Android. Set a daily budget, split costs in any currency and see who owes what. Free to start, no ads.">
+<link rel="canonical" href="https://travelkitty.nz/">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/favicon-48.png" type="image/png" sizes="48x48">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<meta name="theme-color" content="#133A66">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Travel Kitty">
+<meta property="og:url" content="https://travelkitty.nz/">
+<meta property="og:title" content="Travel Kitty: split travel expenses with your group">
+<meta property="og:description" content="Set a daily budget, split costs in any currency and see who owes what. A shared travel expense app for Android. Free to start, no ads.">
+<meta property="og:image" content="https://travelkitty.nz/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Travel Kitty, with the Overview and Group screens from a sample trip to Japan.">
+<meta property="og:locale" content="en_NZ">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://travelkitty.nz/#org",
+      "name": "Travel Kitty",
+      "url": "https://travelkitty.nz/",
+      "logo": "https://travelkitty.nz/apple-touch-icon.png",
+      "email": "support@travelkitty.nz",
+      "areaServed": "NZ"
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://travelkitty.nz/#site",
+      "name": "Travel Kitty",
+      "url": "https://travelkitty.nz/",
+      "publisher": {"@id": "https://travelkitty.nz/#org"}
+    },
+    {
+      "@type": "MobileApplication",
+      "name": "Travel Kitty",
+      "url": "https://travelkitty.nz/",
+      "description": "A shared travel expense app. Set a daily budget, log what you spend in any currency, split it across everyone on the trip and see who owes what.",
+      "operatingSystem": "Android",
+      "applicationCategory": "FinanceApplication",
+      "installUrl": "https://play.google.com/store/apps/details?id=nz.travelkitty.app",
+      "image": "https://travelkitty.nz/og-image.png",
+      "publisher": {"@id": "https://travelkitty.nz/#org"},
+      "offers": [
+        {"@type": "Offer", "name": "Free", "price": "0", "priceCurrency": "NZD"},
+        {"@type": "Offer", "name": "Premium, monthly", "price": "4.99", "priceCurrency": "NZD"},
+        {"@type": "Offer", "name": "Premium, yearly", "price": "49.99", "priceCurrency": "NZD"}
+      ]
+    }
+  ]
+}
+</script>
 <style>
   :root {
     color-scheme: light dark;
@@ -93,6 +148,7 @@
   @media (min-width: 36rem) { .rail { grid-template-columns: repeat(2, 1fr); } }
   @media (min-width: 56rem) { .rail { grid-template-columns: repeat(4, 1fr); } }
   .shot { margin: 0; width: 100%; max-width: 17rem; }
+  .shot picture { display: block; }
   .shot img {
     width: 100%; height: auto; display: block; border-radius: 18px;
     border: 1px solid var(--line); background: var(--card);
@@ -265,42 +321,42 @@
 
     <div class="rail">
       <figure class="shot">
-        <img src="shots/01-overview.png" alt="The Overview tab for Japan 2026: a balance of $424.33, a daily budget of $400.00, the average per day and amount spent, a trip map row with 11 pinned expenses, and recent activity." loading="lazy" width="1080" height="2160">
+        <picture><source srcset="shots/01-overview.webp" type="image/webp"><img src="shots/01-overview.png" alt="The Overview tab for Japan 2026: a balance of $424.33, a daily budget of $400.00, the average per day and amount spent, a trip map row with 11 pinned expenses, and recent activity." loading="lazy" width="1080" height="2160"></picture>
         <figcaption><b>Your trip, at a glance</b><span>See your balance, average per day and latest expenses in one place.</span></figcaption>
       </figure>
 
       <figure class="shot">
-        <img src="shots/02-expenses.png" alt="The Expenses tab, with a Filter button and expenses grouped by day with each day&rsquo;s total." loading="lazy" width="1080" height="2160">
+        <picture><source srcset="shots/02-expenses.webp" type="image/webp"><img src="shots/02-expenses.png" alt="The Expenses tab, with a Filter button and expenses grouped by day with each day&rsquo;s total." loading="lazy" width="1080" height="2160"></picture>
         <figcaption><b>All your spending, organised</b><span>Find any expense, filter the list and change several expenses at once.</span></figcaption>
       </figure>
 
       <figure class="shot">
-        <img src="shots/03-receipt.png" alt="Add expense after scanning a Japanese ramen receipt: 3,470 yen, about $39.19, filed under Restaurants and named Ramen Tanuki Shinjuku, each marked From your receipt." loading="lazy" width="1080" height="2160">
+        <picture><source srcset="shots/03-receipt.webp" type="image/webp"><img src="shots/03-receipt.png" alt="Add expense after scanning a Japanese ramen receipt: 3,470 yen, about $39.19, filed under Restaurants and named Ramen Tanuki Shinjuku, each marked From your receipt." loading="lazy" width="1080" height="2160"></picture>
         <figcaption><b>Scan a receipt</b><span>Snap a receipt in any language and Travel Kitty fills in the amount, currency, category and shop for you to check.</span></figcaption>
       </figure>
 
       <figure class="shot">
-        <img src="shots/04-insights.png" alt="Insights: budget to date, spent and balance, above a donut chart of spending by category." loading="lazy" width="1080" height="2160">
+        <picture><source srcset="shots/04-insights.webp" type="image/webp"><img src="shots/04-insights.png" alt="Insights: budget to date, spent and balance, above a donut chart of spending by category." loading="lazy" width="1080" height="2160"></picture>
         <figcaption><b>Know where it goes</b><span>See what you&rsquo;re spending by category, by person or by day.</span></figcaption>
       </figure>
 
       <figure class="shot">
-        <img src="shots/05-map.png" alt="The trip map of Japan with pins clustered around Kyoto and Osaka, and a card for a shrine charm with Directions and Edit buttons." loading="lazy" width="1080" height="2160">
+        <picture><source srcset="shots/05-map.webp" type="image/webp"><img src="shots/05-map.png" alt="The trip map of Japan with pins clustered around Kyoto and Osaka, and a card for a shrine charm with Directions and Edit buttons." loading="lazy" width="1080" height="2160"></picture>
         <figcaption><b>Every place, on the map</b><span>Pin where you spent it, then get directions back there in Google Maps.</span></figcaption>
       </figure>
 
       <figure class="shot">
-        <img src="shots/06-group.png" alt="The Group tab: an Invite button, the two people on the trip, what each owes or is owed, and one suggested payment." loading="lazy" width="1080" height="2160">
+        <picture><source srcset="shots/06-group.webp" type="image/webp"><img src="shots/06-group.png" alt="The Group tab: an Invite button, the two people on the trip, what each owes or is owed, and one suggested payment." loading="lazy" width="1080" height="2160"></picture>
         <figcaption><b>Settle up whenever you&rsquo;re ready</b><span>See who owes what, and the fewest payments that square everyone up.</span></figcaption>
       </figure>
 
       <figure class="shot">
-        <img src="shots/07-people.png" alt="Insights by person: what each traveller paid, what their share is, and what they owe or are owed." loading="lazy" width="1080" height="2160">
+        <picture><source srcset="shots/07-people.webp" type="image/webp"><img src="shots/07-people.png" alt="Insights by person: what each traveller paid, what their share is, and what they owe or are owed." loading="lazy" width="1080" height="2160"></picture>
         <figcaption><b>Keep things fair</b><span>See what everyone&rsquo;s paid and what their share is. No awkward guesswork.</span></figcaption>
       </figure>
 
       <figure class="shot">
-        <img src="shots/08-trips.png" alt="My trips: Japan 2026 and New Zealand with cover photos, and two archived trips, Queenstown ski and Melbourne weekend." loading="lazy" width="1080" height="2160">
+        <picture><source srcset="shots/08-trips.webp" type="image/webp"><img src="shots/08-trips.png" alt="My trips: Japan 2026 and New Zealand with cover photos, and two archived trips, Queenstown ski and Melbourne weekend." loading="lazy" width="1080" height="2160"></picture>
         <figcaption><b>Archive finished trips</b><span>Keep every past trip to look back on. Archived trips don&rsquo;t count toward your Free trip.</span></figcaption>
       </figure>
     </div>
@@ -443,8 +499,8 @@
     <nav>
       <a href="https://view.travelkitty.nz">Sign in</a>
       <a href="mailto:support@travelkitty.nz">Contact us</a>
-      <a href="./privacy.html">Privacy policy</a>
-      <a href="./delete-account.html">Delete your account</a>
+      <a href="/privacy">Privacy policy</a>
+      <a href="/delete-account">Delete your account</a>
     </nav>
     <p>Travel Kitty. A shared travel expense app for Android.<br>
     Made in New Zealand.</p>
