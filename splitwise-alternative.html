@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>A Splitwise alternative for group trips | Travel Kitty</title>
-<meta name="description" content="Looking for a Splitwise alternative for a trip? Travel Kitty has no ads and no daily limit, and exchange rates and charts are free. Here's how they compare.">
+<meta name="description" content="A Splitwise alternative for trips. Travel Kitty for Android has no ads and no daily limit, and exchange rates and charts are free. Here's how they compare.">
 <link rel="canonical" href="https://travelkitty.nz/splitwise-alternative">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="icon" href="/favicon-48.png" type="image/png" sizes="48x48">
@@ -18,6 +18,7 @@
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="Travel Kitty, with the Overview and Group screens from a sample trip to Japan.">
+<meta property="og:locale" content="en_NZ">
 <meta name="twitter:card" content="summary_large_image">
 <style>
   :root { color-scheme: light dark; }
@@ -28,15 +29,16 @@
   }
   h1 { font-size: 1.9rem; line-height: 1.25; margin: 0 0 .35rem; }
   h2 { font-size: 1.15rem; margin: 2.2rem 0 .6rem; }
-  .updated { color: #7C8394; font-size: .9rem; margin: 0 0 2rem; }
+  h3 { font-size: 1rem; margin: 1.4rem 0 .2rem; }
+  .updated { color: #5F6779; font-size: .9rem; margin: 0 0 2rem; }
   .lead { font-size: 1.1rem; }
   table { border-collapse: collapse; width: 100%; margin: .6rem 0 1rem; }
   th, td { text-align: left; padding: .5rem .6rem; border-bottom: 1px solid #E3E6ED; vertical-align: top; }
-  thead th { font-size: .85rem; text-transform: uppercase; letter-spacing: .04em; color: #7C8394; }
+  thead th { font-size: .85rem; text-transform: uppercase; letter-spacing: .04em; color: #5F6779; }
   tbody th { font-weight: 600; }
-  a { color: #B9860A; }
+  a { color: #8A6100; }
   .note { border-left: 3px solid #E3A008; padding: .1rem 0 .1rem .9rem; margin: 1.2rem 0; color: #4a4a4a; }
-  .small { font-size: .9rem; color: #7C8394; }
+  .small { font-size: .9rem; color: #5F6779; }
   .badge img { display: block; height: 76px; width: auto; }
   .cta { margin: 1.4rem 0 .4rem; }
   @media (max-width: 30rem) { th, td { padding: .45rem .35rem; font-size: .92rem; } }
@@ -44,6 +46,8 @@
     body { color: #E9EDF5; background: #141A26; }
     th, td { border-bottom-color: #2A3242; }
     .note { color: #B9C0CE; }
+    a { color: #F0BE4B; }
+    .updated, .small, thead th { color: #A6AEBE; }
   }
 </style>
 </head>
@@ -53,9 +57,10 @@
 <p class="updated"><a href="/">Travel Kitty</a> &middot; checked against Splitwise&rsquo;s own pages on 15 November 2026</p>
 
 <p class="lead">Splitwise is great for flatmates and everyday bills. On a trip,
-its free plan gets in the way. You can add four expenses a day, there are ads,
-and converting currencies is part of Pro. Four expenses is breakfast, a train,
-lunch and a museum, and dinner still has to go somewhere.</p>
+its free plan gets in the way. Each person can add four expenses a day, there
+are ads, and converting currencies is part of Pro. If you&rsquo;re the one
+keeping track, four is breakfast, a train, lunch and a museum, and dinner still
+has to go somewhere.</p>
 
 <p>We built Travel Kitty for our own trips. It&rsquo;s a shared travel expense
 app for Android: set a daily budget, log what everyone spends and see who owes
@@ -69,24 +74,27 @@ what, any time you check.</p>
 <h2>The free plans, side by side</h2>
 <table>
   <thead>
-    <tr><th></th><th>Travel Kitty Free</th><th>Splitwise free</th></tr>
+    <tr><td></td><th scope="col">Travel Kitty Free</th><th scope="col">Splitwise free</th></tr>
   </thead>
   <tbody>
     <tr><th>Ads</th><td>None</td><td>Yes</td></tr>
-    <tr><th>Expenses a day</th><td>No limit</td><td>Four</td></tr>
-    <tr><th>Spending in another currency</th><td>29 currencies, with the day&rsquo;s exchange rate locked in</td><td>Currency conversion is in Pro</td></tr>
+    <tr><th>Expenses a day</th><td>No limit</td><td>Four each</td></tr>
+    <tr><th>Spending in another currency</th><td>29 currencies, with the day&rsquo;s exchange rate locked in</td><td>More than 100 currencies, kept as separate balances. Converting them is in Pro</td></tr>
     <tr><th>Charts</th><td>By category, person and day</td><td>Charts are in Pro</td></tr>
-    <tr><th>Receipt scanning</th><td>Three scans, then 300 a month on Premium</td><td>Receipt scanning is in Pro</td></tr>
-    <tr><th>Settling up</th><td>The fewest payments that square everyone up</td><td>Simplify debts</td></tr>
-    <tr><th>Works with no signal</th><td>Yes</td><td>Yes</td></tr>
+    <tr><th>Receipt scanning</th><td>Three scans in total. Premium has 300 a month</td><td>Receipt scanning is in Pro</td></tr>
+    <tr><th>Settling up</th><td>A short list of payments that squares everyone up</td><td>Yes, with Simplify debts</td></tr>
+    <tr><th>Works with no signal</th><td>Mostly (see below)</td><td>Yes</td></tr>
+    <tr><th>Trips or groups of your own</th><td>One at a time. Archived trips and trips you&rsquo;re invited to don&rsquo;t count</td><td>No limit listed</td></tr>
+    <tr><th>Export to a spreadsheet</th><td>On Premium</td><td>Yes</td></tr>
   </tbody>
 </table>
 <p class="small">Splitwise details are from <a href="https://www.splitwise.com/">splitwise.com</a>,
 <a href="https://www.splitwise.com/pro">splitwise.com/pro</a> and
 <a href="https://kb.splitwise.com/pro/what-is-splitwise-pro">Splitwise&rsquo;s help centre</a>
-on 15 November 2026. Plans change, so check there too.</p>
+on 15 November 2026. Plans change, so check there too. Spotted something out of
+date? Email <a href="mailto:support@travelkitty.nz">support@travelkitty.nz</a> and we&rsquo;ll fix it.</p>
 
-<h2>What Travel Kitty adds for a trip</h2>
+<h2>Made for trips</h2>
 <ul>
   <li><strong>A daily budget.</strong> Set one for the trip and your balance
   shows how far ahead of or behind it you are, every day.</li>
@@ -94,10 +102,13 @@ on 15 November 2026. Plans change, so check there too.</p>
   directions back there in Google Maps.</li>
   <li><strong>Top-ups and refunds.</strong> Add money to the kitty, or record
   money that came back, and the balance stays right.</li>
-  <li><strong>Trips you can archive.</strong> Keep every past trip to look back
-  on. Archived trips don&rsquo;t count toward your one Free trip.</li>
+  <li><strong>Trips you can archive.</strong> When a trip&rsquo;s over, archive
+  it and start the next. It stays to look back on, and archived trips don&rsquo;t
+  count toward your one Free trip.</li>
   <li><strong>New Zealand bank import.</strong> Bank in New Zealand? You can
-  bring in your own transactions through Akahu. It takes a little setting up.</li>
+  bring in your own transactions through Akahu. It takes a little setting up:
+  you make a personal app with Akahu, then add its tokens under Settings &rarr;
+  Advanced. On Free, transactions arrive in Uncategorised for you to sort.</li>
 </ul>
 
 <h2>Where Splitwise is the better choice</h2>
@@ -118,31 +129,33 @@ on 15 November 2026. Plans change, so check there too.</p>
 </ul>
 
 <h2>Questions</h2>
-<p><strong>Is Travel Kitty free?</strong><br>
-Yes. Free has no ads and no daily limit, and you can run one trip of your own at
-a time with up to 20 people on it. Trips you&rsquo;re invited to don&rsquo;t
-count, so join as many as you like. Premium is NZ$4.99 a month or NZ$49.99 a
-year, for unlimited trips, 300 receipt scans a month, photo backup, exports and
+<h3>Is Travel Kitty free?</h3>
+<p>Yes. Free has no ads and no daily limit, and you can run one trip of your own at
+a time with up to 20 people on it, counting you. Trips you&rsquo;re invited to don&rsquo;t
+count, so join as many as you like. In New Zealand, Premium is NZ$4.99 a month
+or NZ$49.99 a year (Google Play shows the price where you are), for unlimited trips, 300 receipt scans a month, photo backup, exports and
 your own categories.</p>
 
-<p><strong>Can my friends on iPhone join?</strong><br>
-Yes. Add their email address to the trip and Travel Kitty gives you a message to
+<h3>Can my friends on iPhone join?</h3>
+<p>Yes. Add their email address to the trip and Travel Kitty gives you a message to
 send them. They sign in with that address and follow every expense in their
 browser, with nothing to install. To add or change an expense, they&rsquo;ll need
 someone with the Android app.</p>
 
-<p><strong>Does it work overseas with no signal?</strong><br>
-Yes. Expenses save straight to your phone and sync the moment you&rsquo;re back
-online.</p>
+<h3>Does it work overseas with no signal?</h3>
+<p>Mostly, yes. Expenses save straight to your phone and sync when you&rsquo;re
+back online. Looking up a new exchange rate needs a connection. Without one,
+Travel Kitty uses the last rate it has, or saves the expense without a rate for
+you to convert later.</p>
 
-<p><strong>Ready for your next trip?</strong><br>
-Start free. Upgrade whenever you need more.</p>
+<h2>Ready for your next trip?</h2>
+<p>Start free. Upgrade whenever you need more.</p>
 <div class="cta">
   <a class="badge" href="https://play.google.com/store/apps/details?id=nz.travelkitty.app"><img src="google-play-badge.png" alt="Get it on Google Play" width="646" height="250"></a>
 </div>
 
-<p class="note">Splitwise is a trademark of Splitwise, Inc. Travel Kitty
-isn&rsquo;t connected with Splitwise. Made in New Zealand.</p>
+<p class="note">Splitwise is a trademark of Splitwise Inc. Travel Kitty
+isn&rsquo;t connected with or endorsed by Splitwise. Made in New Zealand.</p>
 
 <p class="small"><a href="/">Home</a> &middot; <a href="/privacy">Privacy policy</a> &middot; <a href="mailto:support@travelkitty.nz">Contact us</a></p>
 
